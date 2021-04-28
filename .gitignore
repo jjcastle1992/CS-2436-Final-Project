@@ -1,0 +1,8 @@
+# ignore everything
+*
+
+# unignore files we want to track
+!.gitignore
+!*.h
+!*.cpp
+!*.md
