@@ -28,6 +28,11 @@ string Graph::findAirport (int) {
 
 }
 
+bool Graph::graphEmpty () {
+    bool empty = availableAirports.empty();
+    return empty;
+};
+
 //Vertex add/removal
 bool Graph::addAirport (int id, string airportCode) {
     bool airportAdded = false;
@@ -51,7 +56,7 @@ void Graph::clearAirports () {
 
 }
 
-bool Graph::addRoute (Airport* newRoute) {
+bool Graph::addRoute (Airport* newRoute, int routeLength) {
 
 }
 bool Graph::removeRoute (Airport* deleteRoute) {

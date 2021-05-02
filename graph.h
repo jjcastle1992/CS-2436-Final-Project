@@ -22,12 +22,13 @@ public:
     int numberAirports();
     int numberRoutes ();
     string findAirport (int);
+    bool graphEmpty ();
 
     //Vertex add/removal
     bool addAirport (int, string);
     bool removeAirport (int);
     void clearAirports ();
-    bool addRoute (Airport*);
+    bool addRoute (Airport*, int);
     bool removeRoute (Airport*);
 
     //Printing/Traversal methods
