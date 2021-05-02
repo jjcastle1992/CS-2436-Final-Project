@@ -19,6 +19,7 @@ Graph::~Graph() {
 //Getters
 int Graph::numberAirports() {
     return airportCount;
+    //return availableAirports.size();
 }
 int Graph::numberRoutes () {
     return routeCount;
@@ -28,8 +29,19 @@ string Graph::findAirport (int) {
 }
 
 //Vertex add/removal
-bool Graph::addAirport (int internalID, string airportCode) {
-
+bool Graph::addAirport (int id, string airportCode) {
+    bool airportAdded = false;
+    if (id > -1) { // Will ultimately look to set ID randomly and will check for duplicates...Would like a way to create a list of acceptable 3-character codes to validate from at some point...
+        Airport *addedAirport = new Airport;
+        addedAirport->airportInfo.id = id;
+        addedAirport->airportInfo.airportCode = airportCode;
+        addedAirport->arrival = nullptr;
+        addedAirport->departure = nullptr;
+        availableAirports.push_back(addedAirport);
+        airportAdded = true;
+        airportCount++;
+    }
+    return airportAdded;
 }
 bool Graph::removeAirport (int) {
 
