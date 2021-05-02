@@ -17,9 +17,9 @@ struct Data {
     int routeMiles;
 };
 
-struct DataVertex {
+struct Airport {
     Data airportInfo;
-    DataVertex *departure, *arrival;
+    Airport *departure, *arrival;
 };
 
 #endif //CODE_ASSIGN9_VERTICES_H
