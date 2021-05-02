@@ -7,7 +7,10 @@ Purpose: Implementation file for my graph object that will contain an object tha
 #include "graph.h"
 //Constructor
 Graph::Graph () {
-
+    airportCount = 0;
+    routeCount = 0;
+    airportID = 0; 
+    // I don't need to pre-setup my vector here because I can dynamically add/remove elements as we go in the add/remove methods.
 };
 //Destructor
 Graph::~Graph() {
@@ -43,5 +46,5 @@ void Graph::depthFirstSearch() {
 
 }
 void Graph::breadthFirstSearch() {
-    
+
 }
