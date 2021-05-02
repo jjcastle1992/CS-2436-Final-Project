@@ -23,8 +23,15 @@ int main () {
     std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
     std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
+    std::cout << "\nTesting  addition of a second airport (precursor to adding first route)..." << std::endl;
+    std::cout << "--------------------------" <<std::endl;
+    airportNetwork.addAirport(2, "AUS");
+    airportNetwork.displayGraph();
+    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
+    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
-
+    std::cout << "\nTesting  addition of a first route..." << std::endl;
+    std::cout << "--------------------------" <<std::endl;
 
     return 0;
 };

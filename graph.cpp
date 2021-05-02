@@ -60,7 +60,7 @@ void Graph::displayGraph () {
         for (int count = 0; count < availableAirports.size(); count++) {
             Airport *currentAirport = availableAirports [count];
             if (currentAirport) {
-                std::cout << "Current Airport (ID: " << currentAirport->airportInfo.id << ") - " << currentAirport->airportInfo.airportCode << std::endl;
+                std::cout << "\nCurrent Airport (ID: " << currentAirport->airportInfo.id << ") - " << currentAirport->airportInfo.airportCode << std::endl;
                 std::cout << "Available flights from this airport: ";
                 if (currentAirport->arrival) {
                     while (currentAirport->arrival) {
