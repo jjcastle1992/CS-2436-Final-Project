@@ -37,6 +37,7 @@ bool Graph::addAirport (int id, string airportCode) {
         addedAirport->airportInfo.airportCode = airportCode;
         addedAirport->arrival = nullptr;
         addedAirport->departure = nullptr;
+        addedAirport->airportInfo.routeMiles = -1; //Flag that there is no route.
         availableAirports.push_back(addedAirport);
         airportAdded = true;
         airportCount++;
@@ -61,19 +62,21 @@ void Graph::displayGraph () {
             if (currentAirport) {
                 std::cout << "Current Airport (ID: " << currentAirport->airportInfo.id << ") - " << currentAirport->airportInfo.airportCode << std::endl;
                 std::cout << "Available flights from this airport: ";
-                while (currentAirport->arrival) {
-                    std::cout << currentAirport->airportInfo.airportCode << " - " << currentAirport->arrival->airportInfo.airportCode << ", ";
-                    if (currentAirport->arrival->arrival) {
-                        currentAirport = currentAirport->arrival;
-                    }
-                    else {
-                        std::cout<< "\nEnd of the list of flights departing from " << currentAirport->airportInfo.airportCode << std::endl;
+                if (currentAirport->arrival) {
+                    while (currentAirport->arrival) {
+                        std::cout << currentAirport->airportInfo.airportCode << " - " << currentAirport->arrival->airportInfo.airportCode << ", ";
+                        if (currentAirport->arrival->arrival) {
+                            currentAirport = currentAirport->arrival;
+                        }
                     }
                 }
+                else {
+                    std::cout << "No flights available at this time.";
+                }
+                std::cout<< "\nEnd of the list of flights departing from " << currentAirport->airportInfo.airportCode << std::endl;
             }
         }
     }
-
 }
 void Graph::depthFirstSearch() {
 
