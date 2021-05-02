@@ -52,11 +52,11 @@ void Graph::clearAirports () {
 
 //Printing/Traversal methods
 void Graph::displayGraph () {
-    for (int count = 0; count < availableAirports.size(); count++) {
-        if (availableAirports.size() == 0){
-            std::cout << "Graph empty: there are currently no airports available to display" << std::endl;
-        }
-        else {
+    if (availableAirports.empty()) {
+        std::cout << "Graph empty: there are currently no airports available to display" << std::endl;
+    }
+    else {
+        for (int count = 0; count < availableAirports.size(); count++) {
             Airport *currentAirport = availableAirports [count];
             if (currentAirport) {
                 std::cout << "Current Airport (ID: " << currentAirport->airportInfo.id << ") - " << currentAirport->airportInfo.airportCode << std::endl;
@@ -73,6 +73,7 @@ void Graph::displayGraph () {
             }
         }
     }
+
 }
 void Graph::depthFirstSearch() {
 
