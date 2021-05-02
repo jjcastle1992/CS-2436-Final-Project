@@ -28,7 +28,7 @@ public:
     bool addAirport (int, string);
     bool removeAirport (int);
     void clearAirports ();
-    bool addRoute (Airport*, Airport*, int);
+    bool addRoute (int, int, int); // index in the vector, new Airport ID, route length in miles... will use indices for airport info and weight will be hard-coded or randomly generated for now.
     bool removeRoute (Airport*);
 
     //Printing/Traversal methods

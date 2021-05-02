@@ -5,6 +5,7 @@ Purpose: Implementation file for my graph object that will contain an object tha
 **********************/
 
 #include "graph.h"
+
 //Constructor
 Graph::Graph () {
     airportCount = 0;
@@ -56,9 +57,16 @@ void Graph::clearAirports () {
 
 }
 
-bool Graph::addRoute (Airport *startingAirport, Airport* newRoute, int routeLength) {
+bool Graph::addRoute (int startingID, int destinationID, int routeLength) {
     bool routeAdded = false;
-    if (routeLength > -1) { //ultimately want to find a way to validate Airports in some sort of lookup list.
+    if ((routeLength > -1) && (startingID > -1) && (destinationID > -1) && (startingID != destinationID)) { //ultimately want to find a way to validate Airports in some sort of lookup list.
+        Airport *startingAirport = availableAirports [startingID];
+        Airport *temp = availableAirports [destinationID];
+        Airport *newRoute = new Airport;
+        newRoute->airportInfo.id = temp->airportInfo.id;
+        newRoute->airportInfo.airportCode = temp->airportInfo.airportCode;
+        delete temp;
+
         startingAirport->arrival = newRoute;
         newRoute->departure = startingAirport;
         newRoute->airportInfo.routeMiles = routeLength;
@@ -105,3 +113,4 @@ void Graph::depthFirstSearch() {
 void Graph::breadthFirstSearch() {
 
 }
+
