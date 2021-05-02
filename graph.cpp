@@ -63,9 +63,10 @@ bool Graph::addRoute (int startingID, int destinationID, int routeLength) {
         Airport *startingAirport = availableAirports [startingID];
         Airport *temp = availableAirports [destinationID];
         Airport *newRoute = new Airport;
+        //newRoute->departure = nullptr;
+        newRoute->arrival = nullptr;
         newRoute->airportInfo.id = temp->airportInfo.id;
         newRoute->airportInfo.airportCode = temp->airportInfo.airportCode;
-        delete temp;
 
         startingAirport->arrival = newRoute;
         newRoute->departure = startingAirport;
@@ -94,15 +95,13 @@ void Graph::displayGraph () {
                 if (currentAirport->arrival) {
                     while (currentAirport->arrival) {
                         std::cout << currentAirport->airportInfo.airportCode << " - " << currentAirport->arrival->airportInfo.airportCode << ", ";
-                        if (currentAirport->arrival->arrival) {
-                            currentAirport = currentAirport->arrival;
-                        }
+                        currentAirport = currentAirport->arrival;
                     }
                 }
                 else {
                     std::cout << "No flights available at this time.";
                 }
-                std::cout<< "\nEnd of the list of flights departing from " << currentAirport->airportInfo.airportCode << std::endl;
+                //std::cout<< "\nEnd of the list of flights departing from " << currentAirport->airportInfo.airportCode << std::endl;
             }
         }
     }
