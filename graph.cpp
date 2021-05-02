@@ -57,9 +57,15 @@ void Graph::clearAirports () {
 }
 
 bool Graph::addRoute (Airport *startingAirport, Airport* newRoute, int routeLength) {
-    startingAirport->arrival = newRoute;
-    newRoute->departure = startingAirport;
-    newRoute->airportInfo.routeMiles = routeLength;
+    bool routeAdded = false;
+    if (routeLength > -1) { //ultimately want to find a way to validate Airports in some sort of lookup list.
+        startingAirport->arrival = newRoute;
+        newRoute->departure = startingAirport;
+        newRoute->airportInfo.routeMiles = routeLength;
+        routeAdded = true;
+        routeCount++;
+    }
+    return routeAdded;
 }
 
 bool Graph::removeRoute (Airport* deleteRoute) {
