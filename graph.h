@@ -10,6 +10,7 @@ Purpose: Interface file for my graph object that will contain an object that wil
 
 #include "vertices.h"
 #include <vector>
+#include <iostream>
 
 class Graph {
 public:
