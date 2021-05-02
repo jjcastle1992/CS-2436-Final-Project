@@ -21,14 +21,26 @@ int main () {
 
     std::cout << "\nTesting simple addition of a single airport to our vector..." << std::endl;
     std::cout << "--------------------------" <<std::endl;
-    airportNetwork.addAirport(tempIDs[idCodeCount], tempCodes[idCodeCount++]);
+    bool addedAirport = airportNetwork.addAirport(tempIDs[idCodeCount], tempCodes[idCodeCount++]);
+    if (addedAirport) {
+        std::cout << "Airport added successfully..." << std::endl;
+    }
+    else {
+        std::cout << "Airport not added..." << std::endl;
+    }
     airportNetwork.displayGraph();
     std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
     std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
     std::cout << "\nTesting  addition of a second airport (precursor to adding first route)..." << std::endl;
     std::cout << "--------------------------" <<std::endl;
-    airportNetwork.addAirport(tempIDs[idCodeCount], tempCodes[idCodeCount++]);
+    addedAirport = airportNetwork.addAirport(tempIDs[idCodeCount], tempCodes[idCodeCount++]);
+    if (addedAirport) {
+        std::cout << "Airport added successfully..." << std::endl;
+    }
+    else {
+        std::cout << "Airport not added..." << std::endl;
+    }
     airportNetwork.displayGraph();
     std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
     std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;

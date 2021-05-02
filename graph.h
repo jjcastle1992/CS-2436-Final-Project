@@ -27,6 +27,8 @@ public:
     bool addAirport (int, string);
     bool removeAirport (int);
     void clearAirports ();
+    bool addRoute (Airport*);
+    bool removeRoute (Airport*);
 
     //Printing/Traversal methods
     void displayGraph ();

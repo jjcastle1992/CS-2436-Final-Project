@@ -51,6 +51,13 @@ void Graph::clearAirports () {
 
 }
 
+bool Graph::addRoute (Airport* newRoute) {
+
+}
+bool Graph::removeRoute (Airport* deleteRoute) {
+
+}
+
 //Printing/Traversal methods
 void Graph::displayGraph () {
     if (availableAirports.empty()) {
