@@ -23,7 +23,7 @@ public:
     //Getters
     int numberAirports();
     int numberRoutes ();
-    string findAirport (int);
+    bool findAirport (int, string*);
     bool graphEmpty ();
 
     //Vertex add/removal

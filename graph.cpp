@@ -25,8 +25,20 @@ int Graph::numberAirports() {
 int Graph::numberRoutes () {
     return routeCount;
 }
-string Graph::findAirport (int) {
-
+bool Graph::findAirport (int searchAirport, string *foundCode) {
+    bool foundAirport = false;
+    int count = 0;
+    Airport *end = availableAirports.back();
+    if (searchAirport > -1) {
+        while ((availableAirports[count]->airportInfo.id != searchAirport) && (availableAirports[count] != end)) {
+            availableAirports[count++];
+        }
+        if (availableAirports[count]->airportInfo.id == searchAirport) {
+            *foundCode = availableAirports[count]->airportInfo.airportCode;
+            foundAirport = true;
+        }
+    }
+    return foundAirport;
 }
 
 bool Graph::graphEmpty () {

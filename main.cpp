@@ -94,5 +94,39 @@ int main () {
     std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
     std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
+    std::cout << "\nTesting find airport function" << std::endl;
+    std::cout << dbldashes << std::endl;
+    string searchAirport = "";
+    for (int count = 0; count < arraySize; count++){
+        bool foundAirport = airportNetwork.findAirport(count, &searchAirport);
+        if (foundAirport) {
+            std::cout << "Airport found: " << searchAirport << std::endl;
+        }
+        else {
+            std::cout << "Airport not found..." << std::endl;
+        }
+    }
+    std::cout << "\nTesting find airport function with bad data..." << std::endl;
+    std::cout << dbldashes << std::endl;
+    for (int count = -3; count < 0; count++){
+        bool foundAirport = airportNetwork.findAirport(count, &searchAirport);
+        if (foundAirport) {
+            std::cout << "Airport found: " << searchAirport << std::endl;
+        }
+        else {
+            std::cout << "Airport not found..." << std::endl;
+        }
+    }
+    for (int count = (arraySize+1); count < 10; count++){
+        bool foundAirport = airportNetwork.findAirport(count, &searchAirport);
+        if (foundAirport) {
+            std::cout << "Airport found: " << searchAirport << std::endl;
+        }
+        else {
+            std::cout << "Airport not found..." << std::endl;
+        }
+    }
+
+
     return 0;
 };
