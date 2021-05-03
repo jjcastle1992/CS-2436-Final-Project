@@ -63,7 +63,9 @@ bool Graph::addAirport (int id, string airportCode) {
     return airportAdded;
 }
 bool Graph::removeAirport (int) {
+    bool removedAirport = false;
 
+    return removedAirport;
 }
 void Graph::clearAirports () {
 
@@ -90,7 +92,9 @@ bool Graph::addRoute (int startingID, int destinationID, int routeLength) {
 }
 
 bool Graph::removeRoute (Airport* deleteRoute) {
+    bool removedRoute = false;
 
+    return removedRoute;
 }
 
 //Printing/Traversal methods
