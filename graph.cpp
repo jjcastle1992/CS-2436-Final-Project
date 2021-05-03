@@ -77,13 +77,21 @@ bool Graph::addRoute (int startingID, int destinationID, int routeLength) {
         Airport *startingAirport = availableAirports [startingID];
         Airport *temp = availableAirports [destinationID];
         Airport *newRoute = new Airport;
-        //newRoute->departure = nullptr;
         newRoute->arrival = nullptr;
         newRoute->airportInfo.id = temp->airportInfo.id;
         newRoute->airportInfo.airportCode = temp->airportInfo.airportCode;
-
-        startingAirport->arrival = newRoute;
-        newRoute->departure = startingAirport;
+        if (startingAirport->arrival == nullptr) {
+            startingAirport->arrival = newRoute;
+            newRoute->departure = startingAirport;
+        }
+        else {
+            Airport *position = startingAirport;
+            while (position->arrival) {
+                position = position->arrival;
+            }
+            position->arrival = newRoute;
+            newRoute->departure = position;
+        }
         newRoute->airportInfo.routeMiles = routeLength;
         routeAdded = true;
         routeCount++;
@@ -99,7 +107,7 @@ bool Graph::removeRoute (Airport* deleteRoute) {
 
 //Printing/Traversal methods
 void Graph::displayGraph () {
-    string stars = std::string (NUMDASH, '-');
+    string dashes = std::string (NUMDASH, '-');
     if (availableAirports.empty()) {
         std::cout << "Graph empty: there are currently no airports available to display" << std::endl;
     }
@@ -108,17 +116,19 @@ void Graph::displayGraph () {
             Airport *currentAirport = availableAirports [count];
             if (currentAirport) {
                 std::cout << "\nCurrent Airport (ID: " << currentAirport->airportInfo.id << ") - " << currentAirport->airportInfo.airportCode << std::endl;
-                std::cout << "Available flights from this airport: ";
+                std::cout << "Available destinations from this airport: ";
                 if (currentAirport->arrival) {
                     while (currentAirport->arrival) {
-                        std::cout << currentAirport->airportInfo.airportCode << " - " << currentAirport->arrival->airportInfo.airportCode << ", ";
+                        std::cout << currentAirport->arrival->airportInfo.airportCode << ", ";
                         currentAirport = currentAirport->arrival;
                     }
+                    std::cout << "end...";
                 }
+
                 else {
                     std::cout << "No flights available at this time.";
                 }
-                std::cout << "\n" <<stars;
+                std::cout << "\n" <<dashes;
             }
         }
         std::cout << std::endl;

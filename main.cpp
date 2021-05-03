@@ -127,6 +127,26 @@ int main () {
         }
     }
 
+    std::cout << "\nTesting  addition of a routes that are part of DFW..." << std::endl; //Route Length will be hard-coded or random @ first... but can do a lookup table for Node Pair lookup values.
+    std::cout << dbldashes << std::endl;
+    int dfwArrivals [] {2, 3, 4};
+    int dfwWeights [] {1463, 1387, 1658};
+    string dfwCodes [] {"SFO", "LGA", "SEA"};
+    int dfwArraySize = (sizeof(dfwArrivals)/sizeof(dfwArrivals[0]));
+    for (int dfwCount = 0; dfwCount < dfwArraySize; dfwCount++) {
+        routeAdded = airportNetwork.addRoute(tempIDs[1], dfwArrivals[dfwCount], dfwWeights[dfwCount]);
+        if (routeAdded) {
+            std::cout << "Route added successfully..." << std::endl;
+        }
+        else {
+            std::cout << "Route not added..." << std::endl;
+        }
+    }
+
+    airportNetwork.displayGraph();
+    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
+    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
+
 
     return 0;
 };
