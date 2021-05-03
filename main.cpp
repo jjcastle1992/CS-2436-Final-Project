@@ -12,9 +12,11 @@ int main () {
     int tempIDs [] = {0, 1, 2, 3, 4, 5};
     string tempCodes [] = {"AUS","DFW", "SFO", "LGA", "SEA", "LAX"};
     int idCodeCount = 0;
+    string dbldashes = std::string(NUMDBLDASH,'=');
+
 
     std::cout << "Testing display function on a graph object without any airports..." << std::endl;
-    std::cout << "--------------------------" <<std::endl;
+    std::cout << dbldashes << std::endl;
     airportNetwork.displayGraph();
     std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
     std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
@@ -27,7 +29,7 @@ int main () {
     }
 
     std::cout << "\nTesting simple addition of a single airport to our vector..." << std::endl;
-    std::cout << "--------------------------" <<std::endl;
+    std::cout << dbldashes << std::endl;
     bool addedAirport = airportNetwork.addAirport(tempIDs[idCodeCount], tempCodes[idCodeCount]);
     if (addedAirport) {
         std::cout << "Airport added successfully..." << std::endl;
@@ -48,7 +50,7 @@ int main () {
     }
 
     std::cout << "\nTesting  addition of a second airport (precursor to adding first route)..." << std::endl;
-    std::cout << "--------------------------" <<std::endl;
+    std::cout << dbldashes << std::endl;
     addedAirport = airportNetwork.addAirport(tempIDs[idCodeCount], tempCodes[idCodeCount]);
     if (addedAirport) {
         std::cout << "Airport added successfully..." << std::endl;
@@ -62,7 +64,7 @@ int main () {
     std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
     std::cout << "\nTesting  addition of a first route..." << std::endl; //Route Length will be hard-coded or random @ first... but can do a lookup table for Node Pair lookup values.
-    std::cout << "--------------------------" <<std::endl;
+    std::cout << dbldashes << std::endl;
     bool routeAdded = airportNetwork.addRoute(0, 1, 190);
     if (routeAdded) {
         std::cout << "Route added successfully..." << std::endl;
@@ -71,8 +73,26 @@ int main () {
         std::cout << "Route not added..." << std::endl;
     }
     airportNetwork.displayGraph();
+    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
+    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
     //Note adding airports 3-5 can be done via a loop since we've proven proof of concept on AUS and DFW.
+    std::cout << "\nFilling the remaining Airports based on the graph I created (n = 6)..." << std::endl;
+    std::cout << dbldashes << std::endl;
+    int arraySize = (sizeof(tempIDs)/sizeof(tempIDs[0]));
+    for (int count = idCodeCount; count < arraySize; count++ ) {
+        addedAirport = airportNetwork.addAirport(tempIDs[idCodeCount], tempCodes[idCodeCount]);
+        if (addedAirport) {
+            std::cout << "Airport added successfully..." << std::endl;
+            idCodeCount++;
+        }
+        else {
+            std::cout << "Airport not added..." << std::endl;
+        }
+    }
+    airportNetwork.displayGraph();
+    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
+    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
     return 0;
 };

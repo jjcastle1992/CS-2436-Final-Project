@@ -12,6 +12,8 @@ Purpose: Interface file for my graph object that will contain an object that wil
 #include <vector>
 #include <iostream>
 
+#define NUMDASH 30
+
 class Graph {
 public:
     //Constructor

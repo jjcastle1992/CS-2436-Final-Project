@@ -83,6 +83,7 @@ bool Graph::removeRoute (Airport* deleteRoute) {
 
 //Printing/Traversal methods
 void Graph::displayGraph () {
+    string stars = std::string (NUMDASH, '-');
     if (availableAirports.empty()) {
         std::cout << "Graph empty: there are currently no airports available to display" << std::endl;
     }
@@ -101,9 +102,10 @@ void Graph::displayGraph () {
                 else {
                     std::cout << "No flights available at this time.";
                 }
-                //std::cout<< "\nEnd of the list of flights departing from " << currentAirport->airportInfo.airportCode << std::endl;
+                std::cout << "\n" <<stars;
             }
         }
+        std::cout << std::endl;
     }
 }
 void Graph::depthFirstSearch() {
