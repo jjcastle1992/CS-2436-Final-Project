@@ -168,5 +168,20 @@ int main () {
     std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
     std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
+    std::cout << "\nTesting new anti-duplicate Airport ID protection..." << std::endl;
+    std::cout << dbldashes << std::endl;
+    for (int count = 0; count < 5; count++) {
+        addedAirport = airportNetwork.addAirport(count, &badCode);
+        if (addedAirport) {
+            std::cout << "Airport added successfully..." << std::endl;
+        }
+        else {
+            std::cout << "Airport not added..." << std::endl;
+        }
+    }
+    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
+    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
+
+
     return 0;
 };
