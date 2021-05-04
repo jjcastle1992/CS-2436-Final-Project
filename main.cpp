@@ -30,7 +30,7 @@ int main () {
 
     std::cout << "\nTesting simple addition of a single airport to our vector..." << std::endl;
     std::cout << dbldashes << std::endl;
-    bool addedAirport = airportNetwork.addAirport(tempIDs[idCodeCount], tempCodes[idCodeCount]);
+    bool addedAirport = airportNetwork.addAirport(tempIDs[idCodeCount], &tempCodes[idCodeCount]);
     if (addedAirport) {
         std::cout << "Airport added successfully..." << std::endl;
         idCodeCount++;
@@ -51,7 +51,7 @@ int main () {
 
     std::cout << "\nTesting  addition of a second airport (precursor to adding first route)..." << std::endl;
     std::cout << dbldashes << std::endl;
-    addedAirport = airportNetwork.addAirport(tempIDs[idCodeCount], tempCodes[idCodeCount]);
+    addedAirport = airportNetwork.addAirport(tempIDs[idCodeCount], &tempCodes[idCodeCount]);
     if (addedAirport) {
         std::cout << "Airport added successfully..." << std::endl;
         idCodeCount++;
@@ -81,7 +81,7 @@ int main () {
     std::cout << dbldashes << std::endl;
     int arraySize = (sizeof(tempIDs)/sizeof(tempIDs[0]));
     for (int count = idCodeCount; count < arraySize; count++ ) {
-        addedAirport = airportNetwork.addAirport(tempIDs[idCodeCount], tempCodes[idCodeCount]);
+        addedAirport = airportNetwork.addAirport(tempIDs[idCodeCount], &tempCodes[idCodeCount]);
         if (addedAirport) {
             std::cout << "Airport added successfully..." << std::endl;
             idCodeCount++;
@@ -148,7 +148,7 @@ int main () {
 
     std::cout << "\nTesting displayAirportInfo function on DFW..." << std::endl;
     std::cout << dbldashes << std::endl;
-    airportNetwork.displayAirportInfo(1); // Can change to use random numbers later. 
+    airportNetwork.displayAirportInfo(1); // Can change to use random numbers later.
     std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
     std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
