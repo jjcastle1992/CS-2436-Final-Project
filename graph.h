@@ -19,14 +19,14 @@ public:
     //Constructor
     Graph ();
     //Destructor
-    ~Graph();
+    ~Graph(); // calls clearAirports
     //Getters
     int numberAirports();
     int numberRoutes ();
     bool findAirport (int, string*); //Public method that takes an Airport ID and returns the Airport Code if found.
     bool graphEmpty ();
 
-    //Vertex add/removal
+    //Vertex & Edge add/removal
     bool addAirport (int, string*); // Airport ID (protected against negatives and duplicates currently), Airport Code (3 letter string) - not yet validated/constrained to 3 alpha characters. If valid 3 character string, should autoconvert to uppercase.
     bool removeAirport (int);
     void clearAirports ();
@@ -40,7 +40,7 @@ public:
     void breadthFirstSearch();
 
 private:
-    int findAirport (int); //Overload of find airport for use in add/remove Airport methods that scraps returning a string for returning the element in the vector that the aiport ID was found. -1 means not found.
+    int findAirport (int); //Overload of find airport for use in add/remove Airport methods that scraps returning a string for returning the element in the vector that the airport ID was found. -1 means not found.
     int airportCount; // Increases or decreases with number of vertices (airports)
     int routeCount; // increases or decreases with the number of routes (edges)
     std::vector <Airport*> availableAirports; // Our list of currently available airports
