@@ -110,7 +110,7 @@ bool Graph::removeRoute (int startingID, int destinationID) {
         int startingAirportIndex = findAirport(startingID);
         if (startingAirportIndex > -1) {
             Airport *currentAirport = availableAirports [startingAirportIndex];
-            while (currentAirport->arrival) {
+            while ((currentAirport->arrival) && (currentAirport->airportInfo.id != destinationID)) {
                 currentAirport = currentAirport->arrival;
             }
             if ((!currentAirport->arrival) && (currentAirport->airportInfo.id == destinationID)) { //tail case
@@ -119,6 +119,7 @@ bool Graph::removeRoute (int startingID, int destinationID) {
                 currentAirport->departure = nullptr;
                 delete currentAirport;
                 removedRoute = true;
+                routeCount--;
             }
             else if ((currentAirport->arrival) && (currentAirport->airportInfo.id == destinationID)) { //mid-case
                 currentAirport->departure -> arrival = currentAirport->arrival;
@@ -127,6 +128,7 @@ bool Graph::removeRoute (int startingID, int destinationID) {
                 currentAirport->departure = nullptr;
                 delete currentAirport;
                 removedRoute = true;
+                routeCount--;
             }
             else {
                 // Not found...could set removedRoute to false, but already done... not sure what to put here.
