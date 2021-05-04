@@ -172,16 +172,20 @@ void Graph::breadthFirstSearch() {
 
 int Graph::findAirport(int internalSearchAirport) {
     int airportIndex = -1; // this is the default that indicates the airport ID was NOT found in the vector.
-    Airport *end = availableAirports.back();
-    if (internalSearchAirport > -1) {
-        int count = 0;
-        while ((availableAirports[count]->airportInfo.id != internalSearchAirport) && (availableAirports[count] != end)) {
-            availableAirports[count++];
-        }
-        if (availableAirports[count]->airportInfo.id == internalSearchAirport) {
-            airportIndex = count;
+    bool Empty = graphEmpty();
+    if (!Empty) {
+        Airport *end = availableAirports.back();
+        if (internalSearchAirport > -1) {
+            int count = 0;
+            while ((availableAirports[count]->airportInfo.id != internalSearchAirport) && (availableAirports[count] != end)) {
+                availableAirports[count++];
+            }
+            if (availableAirports[count]->airportInfo.id == internalSearchAirport) {
+                airportIndex = count;
+            }
         }
     }
+
     return airportIndex;
 }
 
