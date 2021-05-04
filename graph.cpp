@@ -74,27 +74,31 @@ void Graph::clearAirports () {
 bool Graph::addRoute (int startingID, int destinationID, int routeLength) {
     bool routeAdded = false;
     if ((routeLength > -1) && (startingID > -1) && (destinationID > -1) && (startingID != destinationID)) { //ultimately want to find a way to validate Airports in some sort of lookup list.
-        Airport *startingAirport = availableAirports [startingID];
-        Airport *temp = availableAirports [destinationID];
-        Airport *newRoute = new Airport;
-        newRoute->arrival = nullptr;
-        newRoute->airportInfo.id = temp->airportInfo.id;
-        newRoute->airportInfo.airportCode = temp->airportInfo.airportCode;
-        if (startingAirport->arrival == nullptr) {
-            startingAirport->arrival = newRoute;
-            newRoute->departure = startingAirport;
-        }
-        else {
-            Airport *position = startingAirport;
-            while (position->arrival) {
-                position = position->arrival;
+        int startingAirportIndex = findAirport(startingID);
+        int destinationAirportIndex = findAirport(destinationID);
+        if ((startingAirportIndex> -1) && (destinationAirportIndex > -1)) {
+            Airport *startingAirport = availableAirports [startingAirportIndex];
+            Airport *temp = availableAirports [destinationAirportIndex];
+            Airport *newRoute = new Airport;
+            newRoute->arrival = nullptr;
+            newRoute->airportInfo.id = temp->airportInfo.id;
+            newRoute->airportInfo.airportCode = temp->airportInfo.airportCode;
+            if (startingAirport->arrival == nullptr) {
+                startingAirport->arrival = newRoute;
+                newRoute->departure = startingAirport;
             }
-            position->arrival = newRoute;
-            newRoute->departure = position;
+            else {
+                Airport *position = startingAirport;
+                while (position->arrival) {
+                    position = position->arrival;
+                }
+                position->arrival = newRoute;
+                newRoute->departure = position;
+            }
+            newRoute->airportInfo.routeMiles = routeLength;
+            routeAdded = true;
+            routeCount++;
         }
-        newRoute->airportInfo.routeMiles = routeLength;
-        routeAdded = true;
-        routeCount++;
     }
     return routeAdded;
 }
