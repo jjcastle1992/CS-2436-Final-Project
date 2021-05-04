@@ -35,6 +35,7 @@ public:
 
     //Printing/Traversal methods
     void displayGraph ();
+    void displayRoutes (int);
     void depthFirstSearch();
     void breadthFirstSearch();
 
