@@ -48,7 +48,8 @@ bool Graph::graphEmpty () {
 //Vertex add/removal
 bool Graph::addAirport (int id, string *airportCode) {
     bool airportAdded = false;
-    if (id > -1) { // Will ultimately look to set ID randomly and will check for duplicates...Would like a way to create a list of acceptable 3-character codes to validate from at some point...
+    int duplicateCheck = findAirport(id);
+    if ((id > -1) && (duplicateCheck == -1)) { // Will ultimately look to set ID randomly and will check for duplicates...Would like a way to create a list of acceptable 3-character codes to validate from at some point...
         Airport *addedAirport = new Airport;
         addedAirport->airportInfo.id = id;
         addedAirport->airportInfo.airportCode = *airportCode;
