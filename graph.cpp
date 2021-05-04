@@ -62,8 +62,34 @@ bool Graph::addAirport (int id, string *airportCode) {
     }
     return airportAdded;
 }
-bool Graph::removeAirport (int) {
+bool Graph::removeAirport (int airportID) {
     bool removedAirport = false;
+    if (airportID > -1) {
+       int airportIndex = findAirport(airportID);
+       if (airportIndex > -1) {
+         Airport *currentAirport = availableAirports [airportIndex];
+         while (currentAirport->arrival) {
+             currentAirport = currentAirport->arrival;
+         }
+         do {
+             if (currentAirport->departure) {
+                 Airport *tempAirport = currentAirport->departure;
+                 currentAirport->departure->arrival = nullptr;
+                 currentAirport->arrival = nullptr;
+                 currentAirport->departure = nullptr;
+                 delete currentAirport;
+                 currentAirport = tempAirport;
+             }
+             else { // must be at the head node.
+                 currentAirport->arrival = nullptr;
+                 delete currentAirport;
+                 availableAirports.erase(availableAirports.begin()+airportIndex); // Should delete the index @ airportIndex. 
+                 removedAirport = true;
+                 airportCount--;
+             }
+         } while (currentAirport);
+       }
+    }
 
     return removedAirport;
 }
