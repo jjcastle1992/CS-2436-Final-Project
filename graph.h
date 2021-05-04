@@ -23,14 +23,14 @@ public:
     //Getters
     int numberAirports();
     int numberRoutes ();
-    bool findAirport (int, string*);
+    bool findAirport (int, string*); //Public method that takes an Airport ID and returns the Airport Code if found.
     bool graphEmpty ();
 
     //Vertex add/removal
-    bool addAirport (int, string*);
+    bool addAirport (int, string*); // Airport ID (protected against negatives and duplicates currently), Airport Code (3 letter string) - not yet validated/constrained to 3 alpha characters. If valid 3 character string, should autoconvert to uppercase.
     bool removeAirport (int);
     void clearAirports ();
-    bool addRoute (int, int, int); // index in the vector, new Airport ID, route length in miles... will use indices for airport info and weight will be hard-coded or randomly generated for now.
+    bool addRoute (int, int, int); // Starting Airport ID, Destination Airport ID, Route length in miles.
     bool removeRoute (int, int);
 
     //Printing/Traversal methods
