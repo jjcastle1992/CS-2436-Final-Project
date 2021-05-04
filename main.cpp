@@ -94,6 +94,22 @@ int main () {
     std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
     std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
+    std::cout << "\nAttempting to add airports with invalid airportIDs..." << std::endl;
+    std::cout << dbldashes << std::endl;
+    string badCode = "BAD!";
+    for (int count = -5; count < 0; count++ ) {
+        addedAirport = airportNetwork.addAirport(count, &badCode);
+        if (addedAirport) {
+            std::cout << "Airport added successfully..." << std::endl;
+        }
+        else {
+            std::cout << "Airport not added..." << std::endl;
+        }
+    }
+    airportNetwork.displayGraph();
+    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
+    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
+
     std::cout << "\nTesting find airport function" << std::endl;
     std::cout << dbldashes << std::endl;
     string searchAirport = "";
