@@ -31,7 +31,7 @@ public:
     bool removeAirport (int);
     void clearAirports ();
     bool addRoute (int, int, int); // Starting Airport ID, Destination Airport ID, Route length in miles.
-    bool removeRoute (int, int);
+    bool removeRoute (int, int); // take in a Starting Airport ID and a Destination Airport ID.
 
     //Printing/Traversal methods
     void displayGraph ();
