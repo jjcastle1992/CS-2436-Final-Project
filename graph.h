@@ -40,6 +40,7 @@ public:
     void breadthFirstSearch();
 
 private:
+    int findAirport (int); //Overload of find airport for use in add/remove Airport methods that scraps returning a string for returning the element in the vector that the aiport ID was found. -1 means not found.
     int airportCount; // Increases or decreases with number of vertices (airports)
     int routeCount; // increases or decreases with the number of routes (edges)
     std::vector <Airport*> availableAirports; // Our list of currently available airports
