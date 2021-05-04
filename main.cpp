@@ -182,6 +182,47 @@ int main () {
     std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
     std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
+    std::cout << "\nTesting removeRoute by removing the DFW-LGA route (mid-case)..." << std::endl;
+    std::cout << dbldashes << std::endl;
+    airportNetwork.displayAirportInfo(1);
+    bool routeRemoved = airportNetwork.removeRoute(1, 3);
+    if (routeRemoved) {
+        std::cout << "\nRoute removed successfully...\n" << std::endl;
+    }
+    else {
+        std::cout << "\nRoute not removed...\n" << std::endl;
+    }
+    airportNetwork.displayAirportInfo(1);
+    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
+    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
+
+    std::cout << "\nTesting removeRoute by removing the DFW-SEA route (tail-case)..." << std::endl;
+    std::cout << dbldashes << std::endl;
+    airportNetwork.displayAirportInfo(1);
+    routeRemoved = airportNetwork.removeRoute(1, 4);
+    if (routeRemoved) {
+        std::cout << "\nRoute removed successfully...\n" << std::endl;
+    }
+    else {
+        std::cout << "\nRoute not removed...\n" << std::endl;
+    }
+    airportNetwork.displayAirportInfo(1);
+    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
+    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
+
+    std::cout << "\nTesting removeRoute data validation by attempting to remove an invalid destination from the DFW airport route list..." << std::endl;
+    std::cout << dbldashes << std::endl;
+    airportNetwork.displayAirportInfo(1);
+    routeRemoved = airportNetwork.removeRoute(1, 1400);
+    if (routeRemoved) {
+        std::cout << "\nRoute removed successfully...\n" << std::endl;
+    }
+    else {
+        std::cout << "\nRoute not removed...\n" << std::endl;
+    }
+    airportNetwork.displayAirportInfo(1);
+    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
+    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
     return 0;
 };
