@@ -142,11 +142,15 @@ int main () {
             std::cout << "Route not added..." << std::endl;
         }
     }
-
     airportNetwork.displayGraph();
     std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
     std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
+    std::cout << "\nTesting displayAirportInfo function on DFW..." << std::endl;
+    std::cout << dbldashes << std::endl;
+    airportNetwork.displayAirportInfo(1); // Can change to use random numbers later. 
+    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
+    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
     return 0;
 };

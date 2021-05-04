@@ -35,7 +35,7 @@ public:
 
     //Printing/Traversal methods
     void displayGraph ();
-    void displayRoutes (int);
+    void displayAirportInfo (int);
     void depthFirstSearch();
     void breadthFirstSearch();
 

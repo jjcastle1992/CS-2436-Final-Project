@@ -136,12 +136,12 @@ void Graph::displayGraph () {
     }
 }
 
-void Graph::displayRoutes(int searchAirportId) {
+void Graph::displayAirportInfo (int searchAirportId) {
     string dashes = std::string (NUMDASH, '-');
     if (searchAirportId > -1) {
         Airport *currentAirport = availableAirports [searchAirportId]; // This should work because ID should be analogous to element in the vector
         if (currentAirport) {
-            std::cout << "\nCurrent Airport (ID: " << currentAirport->airportInfo.id << ") - " << currentAirport->airportInfo.airportCode << std::endl;
+            std::cout << "Current Airport (ID: " << currentAirport->airportInfo.id << ") - " << currentAirport->airportInfo.airportCode << std::endl;
             std::cout << "Available destinations from this airport: ";
             if (currentAirport->arrival) {
                 while (currentAirport->arrival) {
@@ -155,6 +155,7 @@ void Graph::displayRoutes(int searchAirportId) {
             }
             std::cout << "\n" <<dashes;
         }
+        std::cout << std::endl;
     }
 }
 
