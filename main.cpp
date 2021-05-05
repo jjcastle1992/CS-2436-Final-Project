@@ -238,5 +238,20 @@ int main () {
     std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
     std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
+    std::cout << "\nTesting removeAirport method by removing DFW (terminal index) ..." << std::endl;
+    std::cout << dbldashes << std::endl;
+    airportNetwork.displayAirportInfo(1);
+    removedAirport = airportNetwork.removeAirport(1);
+    if (removedAirport) {
+        std::cout << "Airport removed successfully..." << std::endl;
+    }
+    else {
+        std::cout << "Airport not removed..." << std::endl;
+    }
+    airportNetwork.displayGraph();
+    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
+    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
+    std::cout << "NOTE: RIGHT NOW REMOVE AIRPORT DOES ***NOT*** SCRUB THE EDGE off other nodes." << std::endl;
+
     return 0;
 };
