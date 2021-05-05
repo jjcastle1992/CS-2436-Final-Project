@@ -251,7 +251,6 @@ int main () {
     airportNetwork.displayGraph();
     std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
     std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
-    std::cout << "NOTE: RIGHT NOW REMOVE AIRPORT DOES ***NOT*** SCRUB THE EDGE off other nodes." << std::endl;
 
     return 0;
 };
