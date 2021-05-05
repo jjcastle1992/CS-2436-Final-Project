@@ -83,6 +83,7 @@ bool Graph::removeAirport (int airportID) {
              }
              else { // must be at the head node.
                  currentAirport->arrival = nullptr;
+                 currentAirport = nullptr;
                  delete currentAirport;
                  availableAirports.erase(availableAirports.begin()+airportIndex); // Should delete the index @ airportIndex.
                  removedAirport = true;
