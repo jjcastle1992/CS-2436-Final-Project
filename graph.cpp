@@ -67,29 +67,34 @@ bool Graph::removeAirport (int airportID) {
     if (airportID > -1) {
        int airportIndex = findAirport(airportID);
        if (airportIndex > -1) {
-         Airport *currentAirport = availableAirports [airportIndex];
-         while (currentAirport->arrival) {
-             currentAirport = currentAirport->arrival;
-         }
-         do {
-             if (currentAirport->departure) {
-                 Airport *tempAirport = currentAirport->departure;
-                 currentAirport->departure->arrival = nullptr;
-                 currentAirport->arrival = nullptr;
-                 currentAirport->departure = nullptr;
-                 delete currentAirport;
-                 routeCount--;
-                 currentAirport = tempAirport;
-             }
-             else { // must be at the head node.
-                 currentAirport->arrival = nullptr;
-                 currentAirport = nullptr;
-                 delete currentAirport;
-                 availableAirports.erase(availableAirports.begin()+airportIndex); // Should delete the index @ airportIndex.
-                 removedAirport = true;
-                 airportCount--;
-             }
-         } while (currentAirport);
+           //Remove Edges Loop first to remove routes from other Airport vertices
+           for (int count = 0; count < availableAirports.size(); count++) {
+               removeRoute(count, airportID);
+           }
+           //Then navigate to the current airport node and do all the edge deletions, vertex deletion and vector resizing
+           Airport *currentAirport = availableAirports [airportIndex];
+           while (currentAirport->arrival) {
+               currentAirport = currentAirport->arrival;
+           }
+           do {
+               if (currentAirport->departure) {
+                   Airport *tempAirport = currentAirport->departure;
+                   currentAirport->departure->arrival = nullptr;
+                   currentAirport->arrival = nullptr;
+                   currentAirport->departure = nullptr;
+                   delete currentAirport;
+                   routeCount--;
+                   currentAirport = tempAirport;
+               }
+               else { // must be at the head node.
+                   currentAirport->arrival = nullptr;
+                   currentAirport = nullptr;
+                   delete currentAirport;
+                   availableAirports.erase(availableAirports.begin()+airportIndex); // Should delete the index @ airportIndex.
+                   removedAirport = true;
+                   airportCount--;
+               }
+           } while (currentAirport);
        }
     }
 
