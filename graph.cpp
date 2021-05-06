@@ -14,7 +14,7 @@ Graph::Graph () {
 };
 //Destructor
 Graph::~Graph() {
-
+    clearAirports();
 }
 //Getters
 int Graph::numberAirports() {
