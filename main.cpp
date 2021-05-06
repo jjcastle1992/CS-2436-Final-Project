@@ -259,83 +259,102 @@ int main () {
     std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
     std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
-//    std::cout << "Building Graph as per Adjacency List." << std::endl;
-//    std::cout << dbldashes << std::endl;
-//    //AUS
-//    int ausArrivals [] {1};
-//    int ausWeights [] {190};
-//    int ausArraySize = (sizeof(ausArrivals)/sizeof(ausArrivals[0]));
-//    for (int ausCount = 0; ausCount < ausArraySize; ausCount++) {
-//        routeAdded = airportNetwork.addRoute(tempIDs[0], ausArrivals[ausCount], ausWeights[ausCount]);
-//        if (routeAdded) {
-//            std::cout << "Route added successfully..." << std::endl;
-//        }
-//        else {
-//            std::cout << "Route not added..." << std::endl;
-//        }
-//    }
-//    //DFW
-//    for (int count = 0; count < dfwArraySize; count++) {
-//        routeAdded = airportNetwork.addRoute(tempIDs[1], dfwArrivals[count], dfwWeights[count]);
-//        if (routeAdded) {
-//            std::cout << "Route added successfully..." << std::endl;
-//        }
-//        else {
-//            std::cout << "Route not added..." << std::endl;
-//        }
-//    }
-//    //SFO
-//    int sfoArrivals [] {1, 4, 5};
-//    int sfoWeights [] {1463, 679, 338};
-//    int sfoArraySize = (sizeof(sfoArrivals)/sizeof(sfoArrivals[0]));
-//    for (int count = 0; count < sfoArraySize; count++) {
-//        routeAdded = airportNetwork.addRoute(tempIDs[2], sfoArrivals[count], sfoWeights[count]);
-//        if (routeAdded) {
-//            std::cout << "Route added successfully..." << std::endl;
-//        }
-//        else {
-//            std::cout << "Route not added..." << std::endl;
-//        }
-//    }
-//    //LGA
-//    int lgaArrivals [] {1};
-//    int lgaWeights [] {1387};
-//    int lgaArraySize = (sizeof(lgaArrivals)/sizeof(lgaArrivals[0]));
-//    for (int count = 0; count < lgaArraySize; count++) {
-//        routeAdded = airportNetwork.addRoute(tempIDs[3], lgaArrivals[count], lgaWeights[count]);
-//        if (routeAdded) {
-//            std::cout << "Route added successfully..." << std::endl;
-//        }
-//        else {
-//            std::cout << "Route not added..." << std::endl;
-//        }
-//    }
-//    //SEA
-//    int seaArrivals [] {1, 2};
-//    int seaWeights [] {1658, 679};
-//    int seaArraySize = (sizeof(seaArrivals)/sizeof(seaArrivals[0]));
-//    for (int count = 0; count < seaArraySize; count++) {
-//        routeAdded = airportNetwork.addRoute(tempIDs[4], seaArrivals[count], seaWeights[count]);
-//        if (routeAdded) {
-//            std::cout << "Route added successfully..." << std::endl;
-//        }
-//        else {
-//            std::cout << "Route not added..." << std::endl;
-//        }
-//    }
-//    //LAX
-//    int laxArrivals [] {2};
-//    int laxWeights [] {338};
-//    int laxArraySize = (sizeof(laxArrivals)/sizeof(laxArrivals[0]));
-//    for (int count = 0; count < laxArraySize; count++) {
-//        routeAdded = airportNetwork.addRoute(tempIDs[5], laxArrivals[count], laxWeights[count]);
-//        if (routeAdded) {
-//            std::cout << "Route added successfully..." << std::endl;
-//        }
-//        else {
-//            std::cout << "Route not added..." << std::endl;
-//        }
-//    }
+    std::cout << "\nAdding All Airports from Graph Design (n = 6)..." << std::endl;
+    std::cout << dbldashes << std::endl;
+    arraySize = (sizeof(tempIDs)/sizeof(tempIDs[0]));
+    for (int count = 0; count < arraySize; count++ ) {
+        addedAirport = airportNetwork.addAirport(tempIDs[count], &tempCodes[count]);
+        if (addedAirport) {
+            std::cout << "Airport added successfully..." << std::endl;
+        }
+        else {
+            std::cout << "Airport not added..." << std::endl;
+        }
+    }
+    airportNetwork.displayGraph();
+    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
+    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
+
+    std::cout << "Adding routes as per Adjacency List." << std::endl;
+    std::cout << dbldashes << std::endl;
+    //AUS
+    int ausArrivals [] {1};
+    int ausWeights [] {190};
+    int ausArraySize = (sizeof(ausArrivals)/sizeof(ausArrivals[0]));
+    for (int ausCount = 0; ausCount < ausArraySize; ausCount++) {
+        routeAdded = airportNetwork.addRoute(tempIDs[0], ausArrivals[ausCount], ausWeights[ausCount]);
+        if (routeAdded) {
+            std::cout << "Route added successfully..." << std::endl;
+        }
+        else {
+            std::cout << "Route not added..." << std::endl;
+        }
+    }
+    //DFW
+    for (int count = 0; count < dfwArraySize; count++) {
+        routeAdded = airportNetwork.addRoute(tempIDs[1], dfwArrivals[count], dfwWeights[count]);
+        if (routeAdded) {
+            std::cout << "Route added successfully..." << std::endl;
+        }
+        else {
+            std::cout << "Route not added..." << std::endl;
+        }
+    }
+    //SFO
+    int sfoArrivals [] {1, 4, 5};
+    int sfoWeights [] {1463, 679, 338};
+    int sfoArraySize = (sizeof(sfoArrivals)/sizeof(sfoArrivals[0]));
+    for (int count = 0; count < sfoArraySize; count++) {
+        routeAdded = airportNetwork.addRoute(tempIDs[2], sfoArrivals[count], sfoWeights[count]);
+        if (routeAdded) {
+            std::cout << "Route added successfully..." << std::endl;
+        }
+        else {
+            std::cout << "Route not added..." << std::endl;
+        }
+    }
+    //LGA
+    int lgaArrivals [] {1};
+    int lgaWeights [] {1387};
+    int lgaArraySize = (sizeof(lgaArrivals)/sizeof(lgaArrivals[0]));
+    for (int count = 0; count < lgaArraySize; count++) {
+        routeAdded = airportNetwork.addRoute(tempIDs[3], lgaArrivals[count], lgaWeights[count]);
+        if (routeAdded) {
+            std::cout << "Route added successfully..." << std::endl;
+        }
+        else {
+            std::cout << "Route not added..." << std::endl;
+        }
+    }
+    //SEA
+    int seaArrivals [] {1, 2};
+    int seaWeights [] {1658, 679};
+    int seaArraySize = (sizeof(seaArrivals)/sizeof(seaArrivals[0]));
+    for (int count = 0; count < seaArraySize; count++) {
+        routeAdded = airportNetwork.addRoute(tempIDs[4], seaArrivals[count], seaWeights[count]);
+        if (routeAdded) {
+            std::cout << "Route added successfully..." << std::endl;
+        }
+        else {
+            std::cout << "Route not added..." << std::endl;
+        }
+    }
+    //LAX
+    int laxArrivals [] {2};
+    int laxWeights [] {338};
+    int laxArraySize = (sizeof(laxArrivals)/sizeof(laxArrivals[0]));
+    for (int count = 0; count < laxArraySize; count++) {
+        routeAdded = airportNetwork.addRoute(tempIDs[5], laxArrivals[count], laxWeights[count]);
+        if (routeAdded) {
+            std::cout << "Route added successfully..." << std::endl;
+        }
+        else {
+            std::cout << "Route not added..." << std::endl;
+        }
+    }
+    airportNetwork.displayGraph();
+    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
+    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
     return 0;
 };
