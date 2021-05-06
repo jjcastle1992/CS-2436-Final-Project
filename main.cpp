@@ -369,7 +369,7 @@ int main () {
     std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
     std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
-    std::cout << "\nTesting adding an edge from LAX to AUS..." << std::endl;
+    std::cout << "\nTesting adding an edge from LAX to AUS...(Route count should go up)" << std::endl;
     std::cout << dbldashes << std::endl;;
     routeAdded = airportNetwork.addRoute(5,0,1568);
     if (routeAdded) {
