@@ -242,10 +242,21 @@ void Graph::displayAirportInfo (int searchAirportId) {
     }
 }
 
-void Graph::depthFirstSearch() {
+void Graph::depthFirstSearch(int startingVertex) {
+    //Start @ Begin Vertex (find element based on ID)  & print. Add ID to a stack of visited numbers (memory stack) and a position stack (temp stack). (push to both)
 
+    //Look at the ID of the next edge (arrival) and see if it is on the memory stack. If not, push the new ID onto the memory stack and position stack. and set new position ot
+
+    // IF ID is not in stack, print and add the ID to the stack. if the ID is in the stack, don't print, and set the next starting vertex to the next edge on this node.
+
+    //If you hit a node with no edge, thjen pop the last thing  off the stack, and ask what edge is next that is not in the stack. Keep popping as neded
+
+    //Repeat until  all unique airport IDs are marked as visited.
 }
-void Graph::breadthFirstSearch() {
+void Graph::breadthFirstSearch(int startingVertex) {
+    //Start @ begin vertex push all edges onto the memory stack and all except starting node in position queue and print as you push.
+
+    //If arrivals = null pop first item off position queue
 
 }
 
