@@ -272,18 +272,18 @@ bool Graph::edgeFound(int startingId, int destinationId, int *numTimesFound ) {
 
     if ((startingId > -1) && (destinationId > -1) && (startingIndex > -1) && (destinationIndex > -1)) {
         Airport *position = availableAirports[startingIndex];
-        while ((position->arrival) && (position->arrival->airportInfo.id != startingId)) {
-            position = position->arrival;
-        }
-        if ((position->arrival) && (position->arrival->airportInfo.id == startingId)) {
-            foundEdge = true;
-            (*numTimesFound)++;
-        }
-        position = availableAirports[destinationIndex];
         while ((position->arrival) && (position->arrival->airportInfo.id != destinationId)) {
             position = position->arrival;
         }
         if ((position->arrival) && (position->arrival->airportInfo.id == destinationId)) {
+            foundEdge = true;
+            (*numTimesFound)++;
+        }
+        position = availableAirports[destinationIndex];
+        while ((position->arrival) && (position->arrival->airportInfo.id != startingId)) {
+            position = position->arrival;
+        }
+        if ((position->arrival) && (position->arrival->airportInfo.id == startingId)) {
             foundEdge = true;
             (*numTimesFound)++;
         }
