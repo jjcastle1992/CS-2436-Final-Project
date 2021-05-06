@@ -254,13 +254,7 @@ int main () {
     std::cout << "\nTesting clearAirport method..." << std::endl;
     std::cout << dbldashes << std::endl;;
     airportNetwork.clearAirports();
-    isEmpty = airportNetwork.graphEmpty();
-    if (isEmpty) {
-        std::cout << "Graph Empty..." << std::endl;
-    }
-    else {
-        std::cout << "Graph is not empty..." << std::endl;
-    }
+    airportNetwork.graphEmpty();
     airportNetwork.displayGraph();
     std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
     std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
