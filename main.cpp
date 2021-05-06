@@ -356,5 +356,31 @@ int main () {
     std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
     std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
+    std::cout << "Testing adding a route to an airport that already contains that route (DFW-LGA)..." << std::endl;
+    std::cout << dbldashes << std::endl;
+    addedAirport = airportNetwork.addRoute(1, 3, 9001);
+    if (routeAdded) {
+        std::cout << "Route added successfully..." << std::endl;
+    }
+    else {
+        std::cout << "Route not added..." << std::endl;
+    }
+    airportNetwork.displayGraph();
+    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
+    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
+
+    std::cout << "Testing adding an edge from LAX to AUS..." << std::endl;
+    std::cout << dbldashes << std::endl;;
+    addedAirport = airportNetwork.addRoute(5,0,9999);
+    if (routeAdded) {
+        std::cout << "Route added successfully..." << std::endl;
+    }
+    else {
+        std::cout << "Route not added..." << std::endl;
+    }
+    airportNetwork.displayGraph();
+    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
+    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
+
     return 0;
 };
