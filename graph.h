@@ -41,6 +41,7 @@ public:
 
 private:
     int findAirport (int); //Overload of find airport for use in add/remove Airport methods that scraps returning a string for returning the element in the vector that the airport ID was found. -1 means not found.
+    bool edgeFound (int); //searches for the edge (by airportID). If found, does NOT increment/decrement route Count. 
     int airportCount; // Increases or decreases with number of vertices (airports)
     int routeCount; // increases or decreases with the number of routes (edges)
     std::vector <Airport*> availableAirports; // Our list of currently available airports
