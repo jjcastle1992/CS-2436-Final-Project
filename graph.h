@@ -36,8 +36,8 @@ public:
     //Printing/Traversal methods
     void displayGraph ();
     void displayAirportInfo (int);
-    void depthFirstSearch();
-    void breadthFirstSearch();
+    void depthFirstSearch(int);
+    void breadthFirstSearch(int);
 
 private:
     int findAirport (int); //Overload of find airport for use in add/remove Airport methods that scraps returning a string for returning the element in the vector that the airport ID was found. -1 means not found.
