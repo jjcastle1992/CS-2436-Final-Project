@@ -41,7 +41,8 @@ public:
 
 private:
     int findAirport (int); //Overload of find airport for use in add/remove Airport methods that scraps returning a string for returning the element in the vector that the airport ID was found. -1 means not found.
-    bool edgeFound (int, int, int* ); //takes in two airports vertices (start, end), returns (by ref) number of times found (0 = does not exist; 1 = directed; 2 = undirected) If found, does NOT increment/decrement route Count.
+    bool edgeFound (int, int, int* ); //takes in two airports vertices (start, end), returns (by ref) number of times found (0 = does not exist; 1 = directed; 2 = undirected) If found, does NOT increment/decrement route Count. Number of times useful if want to track directed vs. undirected edges (not doing yet).
+    bool duplicateEdge (int, int); //Take in a starting airport ID and a destination airport ID. Only cares if it finds the destination ID as an edge in the starting Airport IDs Vertex.
     int airportCount; // Increases or decreases with number of vertices (airports)
     int routeCount; // increases or decreases with the number of routes (edges)
     std::vector <Airport*> availableAirports; // Our list of currently available airports
