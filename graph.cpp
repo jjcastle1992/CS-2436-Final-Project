@@ -102,7 +102,10 @@ bool Graph::removeAirport (int airportID) {
 }
 
 void Graph::clearAirports () {
-
+    int vectorSize = availableAirports.size();
+    for (int count = 0; count <= vectorSize; count++) {
+        removeAirport(count);
+    }
 }
 
 bool Graph::addRoute (int startingID, int destinationID, int routeLength) {
