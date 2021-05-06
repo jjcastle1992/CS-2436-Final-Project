@@ -114,31 +114,34 @@ bool Graph::addRoute (int startingID, int destinationID, int routeLength) {
         int startingAirportIndex = findAirport(startingID);
         int destinationAirportIndex = findAirport(destinationID);
         if ((startingAirportIndex> -1) && (destinationAirportIndex > -1)) {
-            Airport *startingAirport = availableAirports [startingAirportIndex];
-            Airport *temp = availableAirports [destinationAirportIndex];
-            Airport *newRoute = new Airport;
-            newRoute->arrival = nullptr;
-            newRoute->airportInfo.id = temp->airportInfo.id;
-            newRoute->airportInfo.airportCode = temp->airportInfo.airportCode;
-            int numberRoutes = 0;
-            bool found = edgeFound(startingID, destinationID, &numberRoutes);
-            if (startingAirport->arrival == nullptr) {
-                startingAirport->arrival = newRoute;
-                newRoute->departure = startingAirport;
-            }
-            else {
-                Airport *position = startingAirport;
-                while (position->arrival) {
-                    position = position->arrival;
-                }
-                position->arrival = newRoute;
-                newRoute->departure = position;
-            }
-            newRoute->airportInfo.routeMiles = routeLength;
-            routeAdded = true;
-            if ((!found) && (numberRoutes == 0)) {
-                routeCount++;
-            }
+           bool routeExists = duplicateEdge(startingID, destinationID);
+           if (!routeExists) {
+               Airport *startingAirport = availableAirports [startingAirportIndex];
+               Airport *temp = availableAirports [destinationAirportIndex];
+               Airport *newRoute = new Airport;
+               newRoute->arrival = nullptr;
+               newRoute->airportInfo.id = temp->airportInfo.id;
+               newRoute->airportInfo.airportCode = temp->airportInfo.airportCode;
+               int numberRoutes = 0;
+               bool found = edgeFound(startingID, destinationID, &numberRoutes);
+               if (startingAirport->arrival == nullptr) {
+                   startingAirport->arrival = newRoute;
+                   newRoute->departure = startingAirport;
+               }
+               else {
+                   Airport *position = startingAirport;
+                   while (position->arrival) {
+                       position = position->arrival;
+                   }
+                   position->arrival = newRoute;
+                   newRoute->departure = position;
+               }
+               newRoute->airportInfo.routeMiles = routeLength;
+               routeAdded = true;
+               if ((!found) && (numberRoutes == 0)) {
+                   routeCount++;
+               }
+           }
         }
     }
     return routeAdded;
@@ -288,6 +291,21 @@ bool Graph::edgeFound(int startingId, int destinationId, int *numTimesFound ) {
             (*numTimesFound)++;
         }
     }
-
     return foundEdge;
+}
+
+bool Graph::duplicateEdge(int startingId, int destinationId) {
+    bool duplicate = false;
+    int startingIndex = findAirport(startingId);
+
+    if ((startingId > -1) && (destinationId > -1) && (startingIndex > -1)) {
+        Airport *position = availableAirports[startingIndex];
+        while ((position->arrival) && (position->arrival->airportInfo.id != destinationId)) {
+            position = position->arrival;
+        }
+        if ((position->arrival) && (position->arrival->airportInfo.id == destinationId)) {
+            duplicate = true;
+        }
+    }
+    return duplicate;
 }
