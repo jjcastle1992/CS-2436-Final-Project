@@ -13,6 +13,7 @@ Purpose: Interface file for my graph object that will contain an object that wil
 #include "queue.h" // for BFS position tracking
 #include <vector>
 #include <iostream>
+#include <algorithm> //find
 
 #define NUMDASH 30
 
@@ -48,6 +49,8 @@ private:
     int airportCount; // Increases or decreases with number of vertices (airports)
     int routeCount; // increases or decreases with the number of routes (edges)
     std::vector <Airport*> availableAirports; // Our list of currently available airports
+    std::vector <int> memory;
+    std::vector <int> graphPosition;
 };
 
 #endif //CODE_ASSIGN9_GRAPH_H
