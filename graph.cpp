@@ -244,6 +244,27 @@ void Graph::displayAirportInfo (int searchAirportId) {
 
 void Graph::depthFirstSearch(int startingVertex) {
     //Start @ Begin Vertex (find element based on ID)  & print. Add ID to a stack of visited numbers (memory stack) and a position stack (temp stack). (push to both)
+    Stack memoryStack;
+    Stack positionStack;
+    Airport *position;
+    Airport *end = availableAirports.back();
+    bool breakLoop = false;
+    if (availableAirports[startingVertex] == end) {
+        breakLoop = true;
+    }
+    int startIndex = findAirport(startingVertex);
+    if ((startIndex > -1) && (!breakLoop)) {
+        position = availableAirports [startingVertex];
+        memoryStack.push(startingVertex);
+        positionStack.push(startingVertex);
+
+        std::cout << startingVertex << " -> ";
+        if (position->arrival) {
+            position = position->arrival;
+            int newID = position->airportInfo.id;
+            depthFirstSearch(newID);
+        }
+    }
 
     //Look at the ID of the next edge (arrival) and see if it is on the memory stack. If not, push the new ID onto the memory stack and position stack. and set new position ot
 
