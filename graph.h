@@ -9,6 +9,8 @@ Purpose: Interface file for my graph object that will contain an object that wil
 #define CODE_ASSIGN9_GRAPH_H
 
 #include "vertices.h"
+#include "stack.h" // for BFS/DFS memory + DFS position tracking.
+#include "queue.h" // for BFS position tracking
 #include <vector>
 #include <iostream>
 
@@ -36,8 +38,8 @@ public:
     //Printing/Traversal methods
     void displayGraph ();
     void displayAirportInfo (int);
-    void depthFirstSearch(int);
-    void breadthFirstSearch(int);
+    void depthFirstSearch(int); // Takes in a starting airport ID. Uses stack ADT to track position and memorize vertices visited.
+    void breadthFirstSearch(int); // Takes in a starting airport ID. Uses stack ADT to memorize vertices visited. Uses queue ADT to track position in the graph. 
 
 private:
     int findAirport (int); //Overload of find airport for use in add/remove Airport methods that scraps returning a string for returning the element in the vector that the airport ID was found. -1 means not found.
