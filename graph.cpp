@@ -244,25 +244,27 @@ void Graph::displayAirportInfo (int searchAirportId) {
 
 void Graph::depthFirstSearch(int startingVertex) {
     //Start @ Begin Vertex (find element based on ID)  & print. Add ID to a stack of visited numbers (memory stack) and a position stack (temp stack). (push to both)
-    Stack memoryStack;
-    Stack positionStack;
     Airport *position;
     Airport *end = availableAirports.back();
-    bool breakLoop = false;
+    bool vectorEnd = false;
     if (availableAirports[startingVertex] == end) {
-        breakLoop = true;
+        vectorEnd = true;
     }
     int startIndex = findAirport(startingVertex);
-    if ((startIndex > -1) && (!breakLoop)) {
-        position = availableAirports [startingVertex];
-        memoryStack.push(startingVertex);
-        positionStack.push(startingVertex);
+    if (startIndex > -1) {
+        std::vector <int>::iterator iterator;
+        iterator = find (memory.begin(), memory.end(), startingVertex);
+        if (iterator == memory.end()) { // Means not found...
+            position = availableAirports [startingVertex];
+            memory.push_back(position->airportInfo.id);
+            graphPosition.push_back(position->airportInfo.id);
 
-        std::cout << startingVertex << " -> ";
-        if (position->arrival) {
-            position = position->arrival;
-            int newID = position->airportInfo.id;
-            depthFirstSearch(newID);
+            std::cout << startingVertex << " -> ";
+            if (position->arrival) {
+                position = position->arrival;
+                int newID = position->airportInfo.id;
+                depthFirstSearch(newID);
+            }
         }
     }
 
