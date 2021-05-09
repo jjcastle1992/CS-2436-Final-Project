@@ -260,10 +260,13 @@ void Graph::depthFirstSearch(int startingVertex) {
             graphPosition.push_back(position->airportInfo.id);
 
             std::cout << startingVertex << " -> ";
-            if (position->arrival) {
+            while (position->arrival) {
                 position = position->arrival;
                 int newID = position->airportInfo.id;
-                depthFirstSearch(newID);
+                iterator = find (memory.begin(), memory.end(), newID);
+                if (iterator == memory.end()) { // Means not found...
+                    depthFirstSearch(newID);
+                }
             }
         }
     }
