@@ -21,9 +21,9 @@ Queue::~Queue() {
 bool Queue::push(int newNumber) {
     bool enqueued = false;
 
-    if (back < size - 1) {
+    if (back < MAXSIZE - 1) {
         queue[++back] = newNumber;
-        if (front < 0){
+        if (front < 0) {
             front++;
         }
         enqueued = true;
