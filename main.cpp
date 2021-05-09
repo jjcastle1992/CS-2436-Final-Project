@@ -408,15 +408,9 @@ int main () {
     std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
     std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
-    std::cout << "\nTesting Queue ADT..." << std::endl;
+    std::cout << "\nTesting DFS..." << std::endl;
     std::cout << dbldashes << std::endl;
-    int networkSize = airportNetwork.numberAirports();
-    Queue bfsQueue (networkSize);
-    bfsQueue.dumpStack();
-    for (int count = 0; count < networkSize; count++) {
-        bfsQueue.push(count);
-    }
-    bfsQueue.dumpStack();
+    //airportNetwork.depthFirstSearch(0);
 
     return 0;
 };
