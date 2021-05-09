@@ -11,6 +11,9 @@ Stack::Stack() {
      * is used just to show it's usage for demonstration purposes.
      */
     this->top = -1;
+    for (int count = 0; count < STACKSIZE; count++) {
+        stack[count] = -1;
+    }
 }
 
 Stack::~Stack() {
