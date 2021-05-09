@@ -8,6 +8,8 @@ Purpose: Interface file for my queue object that be used for BFS as the "positio
 #define CODE_ASSIGN9_QUEUE_H
 #include <iostream>
 
+#define MAXSIZE 100
+
 class Queue {
 
 public:
@@ -28,8 +30,7 @@ private:
     int size; // so we can pass and set this value when doing BFS.
     int back;  //do not initialize here, that's what the constructor is for
     int front;
-    int queue[];
-
+    int queue[MAXSIZE];
 };
 
 #endif //CODE_ASSIGN9_QUEUE_H
