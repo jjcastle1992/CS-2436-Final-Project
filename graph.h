@@ -39,7 +39,7 @@ public:
     void displayGraph ();
     void displayAirportInfo (int);
     void depthFirstSearch(int); // Takes in a starting airport ID. Uses stack ADT to track position and memorize vertices visited.
-    void breadthFirstSearch(int); // Takes in a starting airport ID. Uses stack ADT to memorize vertices visited. Uses queue ADT to track position in the graph. 
+    void breadthFirstSearch(int); // Takes in a starting airport ID. Uses stack ADT to memorize vertices visited. Uses queue ADT to track position in the graph.
 
 private:
     int findAirport (int); //Overload of find airport for use in add/remove Airport methods that scraps returning a string for returning the element in the vector that the airport ID was found. -1 means not found.
