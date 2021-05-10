@@ -46,6 +46,7 @@ private:
     bool edgeFound (int, int, int* ); //takes in two airports vertices (start, end), returns (by ref) number of times found (0 = does not exist; 1 = directed; 2 = undirected) If found, does NOT increment/decrement route Count. Number of times useful if want to track directed vs. undirected edges (not doing yet).
     bool duplicateEdge (int, int); //Take in a starting airport ID and a destination airport ID. Only cares if it finds the destination ID as an edge in the starting Airport IDs Vertex.
     bool dfs (int, Airport*); // private method doing the bulk of the DFS work...
+    bool bfs (int); // private method doing the bulk of the BFS work...
     int airportCount; // Increases or decreases with number of vertices (airports)
     int routeCount; // increases or decreases with the number of routes (edges)
     std::vector <Airport*> availableAirports; // Our list of currently available airports

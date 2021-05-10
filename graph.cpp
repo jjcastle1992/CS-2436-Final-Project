@@ -256,9 +256,16 @@ void Graph::depthFirstSearch(int startingVertex) {
     }
 }
 void Graph::breadthFirstSearch(int startingVertex) {
-    //Start @ begin vertex push all edges onto the memory stack and all except starting node in position queue and print as you push.
-
-    //If arrivals = null pop first item off position queue
+    std::cout << "Attemping BFS starting at airport ID: " << startingVertex << std::endl;
+    bool airportExists = bfs (startingVertex);
+    if (airportExists) {
+        std::cout << "end..." << std::endl;
+        memory.clear();
+        bfsPosition.clear();
+    }
+    else {
+        std::cout << "Starting airport does not exist..." << std::endl;
+    }
 }
 
 int Graph::findAirport(int internalSearchAirport) {
@@ -337,12 +344,43 @@ bool Graph::dfs(int startingVertex, Airport *position) {
             std::cout << startingVertex << " -> ";
             while (position->arrival) {
                 position = position->arrival;
-                int newID = position->airportInfo.id;
-                iterator = find (memory.begin(), memory.end(), newID);
+                int newId = position->airportInfo.id;
+                iterator = find (memory.begin(), memory.end(), newId);
                 if (iterator == memory.end()) { // Means not found...
-                    dfs (newID, position);
+                    dfs (newId, position);
                 }
             }
+        }
+    }
+    return airportExists;
+}
+
+bool Graph::bfs (int startingVertex) {
+    bool airportExists = false;
+    int startIndex = findAirport(startingVertex);
+    if (startIndex > -1) {
+        airportExists = true;
+        std::vector <int>::iterator iterator;
+        iterator = find (memory.begin(), memory.end(), startingVertex);
+        if (iterator == memory.end()) { // Means not found..
+            Airport *position = nullptr;// .
+            position = availableAirports [startingVertex];
+            memory.push_back(position->airportInfo.id);
+            bfsPosition.push_back(position->airportInfo.id);
+            std::cout << startingVertex << " -> ";
+            while (position->arrival) { // Look for an adjacent node.
+                position = position->arrival;
+                int newId = position->airportInfo.id;
+                iterator = find (memory.begin(), memory.end(), newId);
+                if (iterator == memory.end()) { // Means not found...
+                    std::cout << newId  << " -> ";
+                    memory.push_back(position->airportInfo.id);
+                    bfsPosition.push_back(position->airportInfo.id);
+                }
+            }
+            bfsPosition.pop_front();
+            int newId = bfsPosition.front();
+            bfs (newId);
         }
     }
     return airportExists;
