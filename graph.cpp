@@ -251,7 +251,7 @@ void Graph::depthFirstSearch(int startingVertex) {
         if (iterator == memory.end()) { // Means not found...
             position = availableAirports [startingVertex];
             memory.push_back(position->airportInfo.id);
-            graphPosition.push_back(position->airportInfo.id);
+            dfsPosition.push_back(position->airportInfo.id);
 
             std::cout << startingVertex << " -> ";
             while (position->arrival) {
@@ -269,7 +269,6 @@ void Graph::breadthFirstSearch(int startingVertex) {
     //Start @ begin vertex push all edges onto the memory stack and all except starting node in position queue and print as you push.
 
     //If arrivals = null pop first item off position queue
-
 }
 
 int Graph::findAirport(int internalSearchAirport) {
