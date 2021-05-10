@@ -412,6 +412,7 @@ int main () {
     std::cout << dbldashes << std::endl;
     airportNetwork.depthFirstSearch(0);
     airportNetwork.depthFirstSearch(1);
+    airportNetwork.depthFirstSearch(3);
 
     return 0;
 };
