@@ -244,11 +244,16 @@ void Graph::displayAirportInfo (int searchAirportId) {
 
 void Graph::depthFirstSearch(int startingVertex) {
     Airport *temp = nullptr;
-    std::cout << "Attemping DFS..." << std::endl;
-    dfs (startingVertex, temp);
-    std::cout << "end..." << std::endl;
-    memory.clear();
-    dfsPosition.clear();
+    std::cout << "Attemping DFS starting at airport ID: " << startingVertex << std::endl;
+    bool airportExists = dfs (startingVertex, temp);
+    if (airportExists) {
+        std::cout << "end..." << std::endl;
+        memory.clear();
+        dfsPosition.clear();
+    }
+    else {
+        std::cout << "Starting airport does not exist..." << std::endl;
+    }
 }
 void Graph::breadthFirstSearch(int startingVertex) {
     //Start @ begin vertex push all edges onto the memory stack and all except starting node in position queue and print as you push.
@@ -317,9 +322,11 @@ bool Graph::duplicateEdge(int startingId, int destinationId) {
     return duplicate;
 }
 
-void Graph::dfs(int startingVertex, Airport *position) {
+bool Graph::dfs(int startingVertex, Airport *position) {
+    bool airportExists = false;
     int startIndex = findAirport(startingVertex);
     if (startIndex > -1) {
+        airportExists = true;
         std::vector <int>::iterator iterator;
         iterator = find (memory.begin(), memory.end(), startingVertex);
         if (iterator == memory.end()) { // Means not found...
@@ -338,4 +345,5 @@ void Graph::dfs(int startingVertex, Airport *position) {
             }
         }
     }
+    return airportExists;
 }
