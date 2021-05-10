@@ -411,6 +411,7 @@ int main () {
     std::cout << "\nTesting DFS..." << std::endl;
     std::cout << dbldashes << std::endl;
     airportNetwork.depthFirstSearch(0);
+    airportNetwork.depthFirstSearch(1);
 
     return 0;
 };
