@@ -8,9 +8,8 @@ Purpose: Interface file for my graph object that will contain an object that wil
 #ifndef CODE_ASSIGN9_GRAPH_H
 #define CODE_ASSIGN9_GRAPH_H
 
-#include "vertices.h"
-#include "stack.h" // for BFS/DFS memory + DFS position tracking.
-#include "queue.h" // for BFS position tracking
+#include "vertices.h" // For housing my index of Airports in my adjacency list. Also used for DFS position tracking and DFS/BFS "memory".
+#include <deque> // for BFS position tracking since my queue ADT does not allow for dynamic growth/decay
 #include <vector>
 #include <iostream>
 #include <algorithm> //find
@@ -46,11 +45,14 @@ private:
     int findAirport (int); //Overload of find airport for use in add/remove Airport methods that scraps returning a string for returning the element in the vector that the airport ID was found. -1 means not found.
     bool edgeFound (int, int, int* ); //takes in two airports vertices (start, end), returns (by ref) number of times found (0 = does not exist; 1 = directed; 2 = undirected) If found, does NOT increment/decrement route Count. Number of times useful if want to track directed vs. undirected edges (not doing yet).
     bool duplicateEdge (int, int); //Take in a starting airport ID and a destination airport ID. Only cares if it finds the destination ID as an edge in the starting Airport IDs Vertex.
+    int dfs (int); // private method doing the bulk of the DFS work...
     int airportCount; // Increases or decreases with number of vertices (airports)
     int routeCount; // increases or decreases with the number of routes (edges)
     std::vector <Airport*> availableAirports; // Our list of currently available airports
     std::vector <int> memory;
-    std::vector <int> graphPosition;
+    std::vector <int> dfsPosition; // Only for DFS positional tracking due to LIFO popping capability.
+    std::deque <int> bfsPosition; // Only for BFS positional tracking due to FIFO dequeing capability.
+
 };
 
 #endif //CODE_ASSIGN9_GRAPH_H
