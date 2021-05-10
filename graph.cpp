@@ -243,27 +243,12 @@ void Graph::displayAirportInfo (int searchAirportId) {
 }
 
 void Graph::depthFirstSearch(int startingVertex) {
-    Airport *position;
-    int startIndex = findAirport(startingVertex);
-    if (startIndex > -1) {
-        std::vector <int>::iterator iterator;
-        iterator = find (memory.begin(), memory.end(), startingVertex);
-        if (iterator == memory.end()) { // Means not found...
-            position = availableAirports [startingVertex];
-            memory.push_back(position->airportInfo.id);
-            dfsPosition.push_back(position->airportInfo.id);
-
-            std::cout << startingVertex << " -> ";
-            while (position->arrival) {
-                position = position->arrival;
-                int newID = position->airportInfo.id;
-                iterator = find (memory.begin(), memory.end(), newID);
-                if (iterator == memory.end()) { // Means not found...
-                    depthFirstSearch(newID);
-                }
-            }
-        }
-    }
+    Airport *temp = nullptr;
+    std::cout << "Attemping DFS..." << std::endl;
+    dfs (startingVertex, temp);
+    std::cout << "end..." << std::endl;
+    memory.clear();
+    dfsPosition.clear();
 }
 void Graph::breadthFirstSearch(int startingVertex) {
     //Start @ begin vertex push all edges onto the memory stack and all except starting node in position queue and print as you push.
@@ -330,4 +315,27 @@ bool Graph::duplicateEdge(int startingId, int destinationId) {
         }
     }
     return duplicate;
+}
+
+void Graph::dfs(int startingVertex, Airport *position) {
+    int startIndex = findAirport(startingVertex);
+    if (startIndex > -1) {
+        std::vector <int>::iterator iterator;
+        iterator = find (memory.begin(), memory.end(), startingVertex);
+        if (iterator == memory.end()) { // Means not found...
+            position = availableAirports [startingVertex];
+            memory.push_back(position->airportInfo.id);
+            dfsPosition.push_back(position->airportInfo.id);
+
+            std::cout << startingVertex << " -> ";
+            while (position->arrival) {
+                position = position->arrival;
+                int newID = position->airportInfo.id;
+                iterator = find (memory.begin(), memory.end(), newID);
+                if (iterator == memory.end()) { // Means not found...
+                    dfs (newID, position);
+                }
+            }
+        }
+    }
 }
