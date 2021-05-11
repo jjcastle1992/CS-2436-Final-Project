@@ -376,6 +376,11 @@ int main () {
     airportNetwork.depthFirstSearch(3);
     airportNetwork.depthFirstSearch(55);
     airportNetwork.depthFirstSearch(-1);
+    airportNetwork.breadthFirstSearch(0);
+    airportNetwork.breadthFirstSearch(1);
+    airportNetwork.breadthFirstSearch(3);
+    airportNetwork.breadthFirstSearch(66);
+    airportNetwork.breadthFirstSearch(-1);
 
 //    std::cout << "\nTesting adding an edge from LAX to AUS...(Route count should go up)" << std::endl;
 //    std::cout << dbldashes << std::endl;;
