@@ -360,14 +360,15 @@ bool Graph::bfs (int startingVertex) {
     int startIndex = findAirport(startingVertex);
     if (startIndex > -1) {
         airportExists = true;
+        Airport *position = availableAirports [startingVertex];
         std::vector <int>::iterator iterator;
         iterator = find (memory.begin(), memory.end(), startingVertex);
-        if (iterator == memory.end()) { // Means not found..
-            Airport *position = nullptr;// .
-            position = availableAirports [startingVertex];
+        if (iterator == memory.end()) { // Means not found...
             memory.push_back(position->airportInfo.id);
             bfsPosition.push_back(position->airportInfo.id);
             std::cout << startingVertex << " -> ";
+        }
+        if (position->arrival) {
             while (position->arrival) { // Look for an adjacent node.
                 position = position->arrival;
                 int newId = position->airportInfo.id;
@@ -378,6 +379,9 @@ bool Graph::bfs (int startingVertex) {
                     bfsPosition.push_back(position->airportInfo.id);
                 }
             }
+        }
+        bool queueEmpty= bfsPosition.empty();
+        if (!queueEmpty) {
             bfsPosition.pop_front();
             int newId = bfsPosition.front();
             bfs (newId);
