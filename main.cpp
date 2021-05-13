@@ -376,6 +376,9 @@ int main () {
     airportNetwork.depthFirstSearch(3);
     airportNetwork.depthFirstSearch(55);
     airportNetwork.depthFirstSearch(-1);
+
+    std::cout << "\nTesting BFS...(Reflects Map)" << std::endl;
+    std::cout << dbldashes << std::endl;
     airportNetwork.breadthFirstSearch(0);
     airportNetwork.breadthFirstSearch(1);
     airportNetwork.breadthFirstSearch(3);
