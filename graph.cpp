@@ -244,7 +244,7 @@ void Graph::displayAirportInfo (int searchAirportId) {
 
 void Graph::depthFirstSearch(int startingVertex) {
     Airport *temp = nullptr;
-    std::cout << "Attemping DFS starting at airport ID: " << startingVertex << std::endl;
+    std::cout << "Attempting DFS starting at airport ID: " << startingVertex << std::endl;
     bool airportExists = dfs (startingVertex, temp);
     if (airportExists) {
         std::cout << "end..." << std::endl;
@@ -256,7 +256,7 @@ void Graph::depthFirstSearch(int startingVertex) {
     }
 }
 void Graph::breadthFirstSearch(int startingVertex) {
-    std::cout << "Attemping BFS starting at airport ID: " << startingVertex << std::endl;
+    std::cout << "Attempting BFS starting at airport ID: " << startingVertex << std::endl;
     bool airportExists = bfs (startingVertex);
     if (airportExists) {
         std::cout << "end..." << std::endl;
