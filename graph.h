@@ -50,9 +50,9 @@ private:
     int airportCount; // Increases or decreases with number of vertices (airports)
     int routeCount; // increases or decreases with the number of routes (edges)
     std::vector <Airport*> availableAirports; // Our list of currently available airports
-    std::vector <int> memory;
-    std::vector <int> dfsPosition; // Only for DFS positional tracking due to LIFO popping capability.
-    std::deque <int> bfsPosition; // Only for BFS positional tracking due to FIFO dequeing capability.
+    std::vector <int> memory;  // Support structure for DFS and BFS that tracks the nodes that have been visited.
+    std::vector <int> dfsPosition; // Support structure only for DFS positional tracking due to LIFO popping capability.
+    std::deque <int> bfsPosition; // Support structure only for BFS positional tracking due to FIFO dequeing capability.
 
 };
 
