@@ -385,44 +385,44 @@ int main () {
     airportNetwork.breadthFirstSearch(66);
     airportNetwork.breadthFirstSearch(-1);
 
-//    std::cout << "\nTesting adding an edge from LAX to AUS...(Route count should go up)" << std::endl;
-//    std::cout << dbldashes << std::endl;;
-//    routeAdded = airportNetwork.addRoute(5,0,1568);
-//    if (routeAdded) {
-//        std::cout << "Route added successfully..." << std::endl;
-//    }
-//    else {
-//        std::cout << "Route not added..." << std::endl;
-//    }
-//    airportNetwork.displayGraph();
-//    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
-//    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
-//
-//    std::cout << "\nTesting making AUS<->LAX (undirected route now...) route count should NOT go up..." << std::endl;
-//    std::cout << dbldashes << std::endl;
-//    routeAdded = airportNetwork.addRoute(0,5,1568);
-//    if (routeAdded) {
-//        std::cout << "Route added successfully..." << std::endl;
-//    }
-//    else {
-//        std::cout << "Route not added..." << std::endl;
-//    }
-//    airportNetwork.displayGraph();
-//    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
-//    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
-//
-//    std::cout << "\nTesting making AUS->DFW route directed (previously undirected; Removing DFW->AUS) count should NOT go down..." << std::endl;
-//    std::cout << dbldashes << std::endl;
-//    routeRemoved = airportNetwork.removeRoute(1,0);
-//    if (routeRemoved) {
-//        std::cout << "Route removed successfully..." << std::endl;
-//    }
-//    else {
-//        std::cout << "Route not removed..." << std::endl;
-//    }
-//    airportNetwork.displayGraph();
-//    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
-//    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
+    std::cout << "\nTesting adding an edge from LAX to AUS...(Route count should go up)" << std::endl;
+    std::cout << dbldashes << std::endl;;
+    routeAdded = airportNetwork.addRoute(5,0,1568);
+    if (routeAdded) {
+        std::cout << "Route added successfully..." << std::endl;
+    }
+    else {
+        std::cout << "Route not added..." << std::endl;
+    }
+    airportNetwork.displayGraph();
+    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
+    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
+
+    std::cout << "\nTesting making AUS<->LAX (undirected route now...) route count should NOT go up..." << std::endl;
+    std::cout << dbldashes << std::endl;
+    routeAdded = airportNetwork.addRoute(0,5,1568);
+    if (routeAdded) {
+        std::cout << "Route added successfully..." << std::endl;
+    }
+    else {
+        std::cout << "Route not added..." << std::endl;
+    }
+    airportNetwork.displayGraph();
+    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
+    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
+
+    std::cout << "\nTesting making AUS->DFW route directed (previously undirected; Removing DFW->AUS) count should NOT go down..." << std::endl;
+    std::cout << dbldashes << std::endl;
+    routeRemoved = airportNetwork.removeRoute(1,0);
+    if (routeRemoved) {
+        std::cout << "Route removed successfully..." << std::endl;
+    }
+    else {
+        std::cout << "Route not removed..." << std::endl;
+    }
+    airportNetwork.displayGraph();
+    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
+    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
     return 0;
 };
