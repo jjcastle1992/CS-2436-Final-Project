@@ -424,5 +424,132 @@ int main () {
     std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
     std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
+    Graph fig20_22;
+    int fig20_22Nodes[] {0,1,2,3,4,5};
+    string fig20_22Labels [] {"0", "1", "2", "3", "4", "5"};
+
+    std::cout << "\nAdding All Vertices from Figure 20-22 (n = 6)..." << std::endl;
+    std::cout << dbldashes << std::endl;
+    arraySize = (sizeof(fig20_22Nodes)/sizeof(fig20_22Nodes[0]));
+    for (int count = 0; count < arraySize; count++ ) {
+        bool addedVertex = fig20_22.addAirport(fig20_22Nodes[count], &fig20_22Labels[count]);
+        if (addedVertex) {
+            std::cout << "Vertex added successfully..." << std::endl;
+        }
+        else {
+            std::cout << "Vertex not added..." << std::endl;
+        }
+    }
+    fig20_22.displayGraph();
+    std::cout << "Number of Vertices: " << fig20_22.numberAirports() << std::endl;
+    std::cout << "Number of Edges: " << fig20_22.numberRoutes() << std::endl;
+
+    std::cout << "\nTesting addition of undirected edges so that graph matches Fig-20-22..." << std::endl;
+    std::cout << dbldashes << std::endl;
+    int fig20_22Count = 0;
+    int node0Adj [] {1, 4};
+    int node0Weight [] {9,1};
+    int node0AdjArraySize = (sizeof(node0Adj)/sizeof(node0Adj[0]));
+    for (int count = 0; count < node0AdjArraySize; count++) {
+        bool edgeAdded = fig20_22.addRoute(tempIDs[fig20_22Count], node0Adj[count], node0Weight [count]);
+        if (edgeAdded) {
+            std::cout << "Edge added successfully..." << std::endl;
+        }
+        else {
+            std::cout << "Edge not added..." << std::endl;
+        }
+    }
+    fig20_22Count++;
+
+    int node1Adj [] {0, 2, 4};
+    int node1Weight [] {9, 8, 6};
+    int node1AdjArraySize = (sizeof(node1Adj)/sizeof(node1Adj[0]));
+    for (int count = 0; count < node1AdjArraySize; count++) {
+        bool edgeAdded = fig20_22.addRoute(tempIDs[fig20_22Count], node1Adj[count], node1Weight [count]);
+        if (edgeAdded) {
+            std::cout << "Edge added successfully..." << std::endl;
+        }
+        else {
+            std::cout << "Edge not added..." << std::endl;
+        }
+    }
+    fig20_22Count++;
+
+    int node2Adj [] {1, 3, 5};
+    int node2Weight [] {8, 5, 2};
+    int node2AdjArraySize = (sizeof(node2Adj)/sizeof(node2Adj[0]));
+    for (int count = 0; count < node2AdjArraySize; count++) {
+        bool edgeAdded = fig20_22.addRoute(tempIDs[fig20_22Count], node2Adj[count], node2Weight [count]);
+        if (edgeAdded) {
+            std::cout << "Edge added successfully..." << std::endl;
+        }
+        else {
+            std::cout << "Edge not added..." << std::endl;
+        }
+    }
+    fig20_22Count++;
+
+    int node3Adj [] {2};
+    int node3Weight [] {5};
+    int node3AdjArraySize = (sizeof(node3Adj)/sizeof(node3Adj[0]));
+    for (int count = 0; count < node3AdjArraySize; count++) {
+        bool edgeAdded = fig20_22.addRoute(tempIDs[fig20_22Count], node3Adj[count], node3Weight [count]);
+        if (edgeAdded) {
+            std::cout << "Edge added successfully..." << std::endl;
+        }
+        else {
+            std::cout << "Edge not added..." << std::endl;
+        }
+    }
+    fig20_22Count++;
+
+    int node4Adj [] {0, 1, 5};
+    int node4Weight [] {1, 6, 7};
+    int node4AdjArraySize = (sizeof(node4Adj)/sizeof(node4Adj[0]));
+    for (int count = 0; count < node4AdjArraySize; count++) {
+        bool edgeAdded = fig20_22.addRoute(tempIDs[fig20_22Count], node4Adj[count], node4Weight [count]);
+        if (edgeAdded) {
+            std::cout << "Edge added successfully..." << std::endl;
+        }
+        else {
+            std::cout << "Edge not added..." << std::endl;
+        }
+    }
+    fig20_22Count++;
+
+    int node5Adj [] {2, 4};
+    int node5Weight [] {2, 7};
+    int node5AdjArraySize = (sizeof(node5Adj)/sizeof(node5Adj[0]));
+    for (int count = 0; count < node5AdjArraySize; count++) {
+        bool edgeAdded = fig20_22.addRoute(tempIDs[fig20_22Count], node5Adj[count], node5Weight [count]);
+        if (edgeAdded) {
+            std::cout << "Edge added successfully..." << std::endl;
+        }
+        else {
+            std::cout << "Edge not added..." << std::endl;
+        }
+    }
+    fig20_22Count++;
+
+    fig20_22.displayGraph();
+    std::cout << "Number of Vertices: " << fig20_22.numberAirports() << std::endl;
+    std::cout << "Number of Edges: " << fig20_22.numberRoutes() << std::endl;
+
+    std::cout << "\nTesting DFS...(Fig 20-22)" << std::endl;
+    std::cout << dbldashes << std::endl;
+    fig20_22.depthFirstSearch(0);
+    fig20_22.depthFirstSearch(1);
+    fig20_22.depthFirstSearch(3);
+    fig20_22.depthFirstSearch(55);
+    fig20_22.depthFirstSearch(-1);
+
+    std::cout << "\nTesting BFS...(Fig 20-22)" << std::endl;
+    std::cout << dbldashes << std::endl;
+    fig20_22.breadthFirstSearch(0);
+    fig20_22.breadthFirstSearch(1);
+    fig20_22.breadthFirstSearch(3);
+    fig20_22.breadthFirstSearch(66);
+    fig20_22.breadthFirstSearch(-1);
+
     return 0;
 };
