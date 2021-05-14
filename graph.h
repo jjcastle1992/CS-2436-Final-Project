@@ -23,21 +23,21 @@ public:
     //Destructor
     ~Graph(); // calls clearAirports
     //Getters
-    int numberAirports();
-    int numberRoutes ();
+    int numberAirports(); // Returns the number of airports (vertices) in the current graph.
+    int numberRoutes (); // Returns the number of routes (edges) in the current graph
     bool findAirport (int, string*); //Public method that takes an Airport ID and returns the Airport Code if found.
-    bool graphEmpty ();
+    bool graphEmpty (); // Tests to see if graph is empty. Returns true if empty.
 
     //Vertex & Edge add/removal
     bool addAirport (int, string*); // Airport ID (protected against negatives and duplicates currently), Airport Code (3 letter string) - not yet validated/constrained to 3 alpha characters. If valid 3 character string, should autoconvert to uppercase.
-    bool removeAirport (int);
-    void clearAirports ();
+    bool removeAirport (int); //Pass the internal ID of the airport you'd like to remove from the graph.
+    void clearAirports (); // Clears all airports from the graph
     bool addRoute (int, int, int); // Starting Airport ID, Destination Airport ID, Route length in miles.
     bool removeRoute (int, int); // take in a Starting Airport ID and a Destination Airport ID.
 
     //Printing/Traversal methods
-    void displayGraph ();
-    void displayAirportInfo (int);
+    void displayGraph (); // Displays the entire graph in adjacency list format. 
+    void displayAirportInfo (int); // Takes in an airport ID. Returns info about the airport including its internal ID and the routes the airport flies to (it's adjacencies)
     void depthFirstSearch(int); // Takes in a starting airport ID. Uses stack ADT to track position and memorize vertices visited.
     void breadthFirstSearch(int); // Takes in a starting airport ID. Uses stack ADT to memorize vertices visited. Uses queue ADT to track position in the graph.
 
