@@ -69,7 +69,8 @@ bool Graph::removeAirport (int airportID) {
        if (airportIndex > -1) {
            //Remove Edges Loop first to remove routes from other Airport vertices
            for (int count = 0; count < availableAirports.size(); count++) {
-               removeRoute(count, airportID);
+               int startId = availableAirports[count]->airportInfo.id;
+               removeRoute(startId, airportID);
            }
            //Then navigate to the current airport node and do all the edge deletions, vertex deletion and vector resizing
            Airport *currentAirport = availableAirports [airportIndex];
