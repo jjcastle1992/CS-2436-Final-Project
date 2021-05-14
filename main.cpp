@@ -424,6 +424,13 @@ int main () {
     std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
     std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
 
+    std::cout << "\nClearing airportNetwork using clearAirports (should leave no airports OR routes)..." << std::endl;
+    std::cout << dbldashes << std::endl;
+    airportNetwork.clearAirports();
+    airportNetwork.displayGraph();
+    std::cout << "Number of airports: " << airportNetwork.numberAirports() << std::endl;
+    std::cout << "Number of routes: " << airportNetwork.numberRoutes() << std::endl;
+
     Graph fig20_22;
     int fig20_22Nodes[] {0,1,2,3,4,5};
     string fig20_22Labels [] {"0", "1", "2", "3", "4", "5"};
@@ -550,6 +557,15 @@ int main () {
     fig20_22.breadthFirstSearch(3);
     fig20_22.breadthFirstSearch(66);
     fig20_22.breadthFirstSearch(-1);
+    fig20_22.displayGraph();
+    std::cout << "Number of Vertices: " << fig20_22.numberAirports() << std::endl;
+    std::cout << "Number of Edges: " << fig20_22.numberRoutes() << std::endl;
+    fig20_22.clearAirports();
+    fig20_22.displayGraph();
+    std::cout << "\nClearing Graph...(Fig 20-22)" << std::endl;
+    std::cout << dbldashes << std::endl;
+    std::cout << "Number of Vertices: " << fig20_22.numberAirports() << std::endl;
+    std::cout << "Number of Edges: " << fig20_22.numberRoutes() << std::endl;
 
     return 0;
 };
