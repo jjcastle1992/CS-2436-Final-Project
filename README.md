@@ -19,15 +19,15 @@ How to Use:
 1. Create a Graph object to act as your container.
 2. Use the addAirport and addRoute methods to build your network of airports and routes.
 3. To traverse the graph use the:
-   a. displayGraph method to show the entire network of airports and routes in adjacency list form.
-   b. displayAirportInfo method to display info about a specific airport (using the internal ID).
-   c. depthFirstSearch method to traverse through the current network of airports using a DFS algorithm
-   d. breadthFirstSearch method to traverse through the current network of airports using a BFS algorithm
+   * displayGraph method to show the entire network of airports and routes in adjacency list form.
+   * displayAirportInfo method to display info about a specific airport (using the internal ID).
+   * depthFirstSearch method to traverse through the current network of airports using a DFS algorithm
+   * breadthFirstSearch method to traverse through the current network of airports using a BFS algorithm
 4. At any time you may call the following informational methods to provide additional info about your airport graph:
-   a. numberAirports method returns the number of airports currently in your graph as an int (you must COUT to display).
-   b. numberRoutes method returns the number of unique routes on the graph (undirected routes are only counted once)
-   c. findAirport method allows you pass in an internal airport ID and it returns the airport code if found (must COUT to display)
-   d. graphEmpty method tests to see if your graph is empty and returns true if it is. 
+   * numberAirports method returns the number of airports currently in your graph as an int (you must COUT to display).
+   * numberRoutes method returns the number of unique routes on the graph (undirected routes are only counted once)
+   * findAirport method allows you pass in an internal airport ID and it returns the airport code if found (must COUT to display)
+   * graphEmpty method tests to see if your graph is empty and returns true if it is. 
 5. Use the removeRoute and removeAirport methods to remove any routes you'd like to take away or whole airports all together.
 6. If you'd like to empty your graph, call the clearAirports method which will remove ALL airports and routes from the graph. 
 
