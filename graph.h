@@ -36,7 +36,7 @@ public:
     bool removeRoute (int, int); // take in a Starting Airport ID and a Destination Airport ID.
 
     //Printing/Traversal methods
-    void displayGraph (); // Displays the entire graph in adjacency list format. 
+    void displayGraph (); // Displays the entire graph in adjacency list format.
     void displayAirportInfo (int); // Takes in an airport ID. Returns info about the airport including its internal ID and the routes the airport flies to (it's adjacencies)
     void depthFirstSearch(int); // Takes in a starting airport ID. Uses stack ADT to track position and memorize vertices visited.
     void breadthFirstSearch(int); // Takes in a starting airport ID. Uses stack ADT to memorize vertices visited. Uses queue ADT to track position in the graph.
@@ -48,12 +48,11 @@ private:
     bool dfs (int, Airport*); // private method doing the bulk of the DFS work...
     bool bfs (int); // private method doing the bulk of the BFS work...
     int airportCount; // Increases or decreases with number of vertices (airports)
-    int routeCount; // increases or decreases with the number of routes (edges)
+    int routeCount; // increases or decreases with the number of unique routes (edges). Undirected routes only get counted the first time.
     std::vector <Airport*> availableAirports; // Our list of currently available airports
     std::vector <int> memory;  // Support structure for DFS and BFS that tracks the nodes that have been visited.
     std::vector <int> dfsPosition; // Support structure only for DFS positional tracking due to LIFO popping capability.
     std::deque <int> bfsPosition; // Support structure only for BFS positional tracking due to FIFO dequeing capability.
-
 };
 
 #endif //CODE_ASSIGN9_GRAPH_H
